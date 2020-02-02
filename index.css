@@ -1,0 +1,271 @@
+body{
+	margin: 0;
+}
+
+/*#task h1{
+	font-family: 'Oleo Script', cursive;
+	text-align: center;
+	color: white;
+	background-color: #C4D037;
+	border-radius: 10px;
+	size: 20px;
+	height: 60px;
+	line-height: 60px;
+	padding-left:20px;
+	margin-top: 10px;
+	width: 70%;
+}*/
+
+#sidebar h2{
+	padding-top: 30px;
+	font-family:'Open Sans', sans-serif;
+	font-size: 25pt;
+	color: #C4D037;
+	margin:0;
+}
+
+h3{
+	padding-left: 12px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+
+p{
+	font-family: 'Roboto', sans-serif;
+	font-size: 12pt;
+}
+
+ul{
+	font-family: 'Roboto', sans-serif;
+}
+img{
+	width: 400px;
+	height: auto;
+}
+
+#sidebar {
+	list-style-type: none;
+	margin: 0;
+	height: 100%; /* 100% Full-height */
+	width: 0;
+	background-color: #F2F2F2;
+	position: fixed;
+	z-index: 1; /* Stay on top */
+	overflow: auto;
+	text-align: left;
+	border-right: 1px solid silver;
+	top: 0;
+	left: 0;
+	overflow-x: hidden; /* Disable horizontal scroll */
+	padding-top: 60px; /* Place content 60px from the top */
+	padding-left: 10px;
+	transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+
+#sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 36px;
+  margin-left: 80px;
+  color: #4D4D4D;
+}
+
+
+#moreinfo {
+	padding: 10px;
+	margin-bottom: 20%;
+}
+
+#content {
+	height:1000px;
+	transition: margin-left .5s; /* If you want a transition effect */
+	padding: 20px;
+}
+
+/*打开侧边栏按钮*/
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  color: gray;
+  padding: 10px 15px;
+  border: none;
+  position: absolute;
+  top: 210px;
+  right: 10px;
+  font-size: 18px;
+  margin-left: 500px;
+  color: #4D4D4D;
+}
+
+.openbtn:hover {
+  color: navy;
+}
+
+/*撤销及后退按钮格式*/
+.ud {
+  background-color: #147BD1; 
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding:5px 5px;
+  width: 50%;
+  margin:3px;
+}
+
+.ud:hover {
+  background-color: #0076A8;
+  cursor: pointer;
+}
+
+.ca {
+  background-color: #A7A8A9; 
+  color: white;
+  border-radius: 3px;
+  padding:5px 5px;
+  width: 50%;
+  margin:3px;
+}
+
+.ca:hover {
+  background-color: #888B8D;
+  cursor: pointer;
+}
+
+.toolText {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 5px;
+  font-size: 10pt;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  left:-120px;  
+}
+
+.ud:hover .toolText {
+  visibility: visible;
+}
+.ca:hover .toolText {
+  visibility: visible;
+}
+
+#readText p{
+	border: 1px solid gray;
+	font-family: 'Lato', sans-serif;
+	padding: 10px;
+	border-radius:5px;
+}
+
+.reason{
+	font:bold 15pt "Roboto";
+	padding:15px;
+}
+
+
+.comment{
+	font:bold 15pt "Roboto";
+	padding:15px;
+}
+
+textarea{
+	width: 80%;
+	height: 50px;
+	border-radius:5px;
+	border:1px solid silver;
+	font-size: 14pt;
+	font-family: 'Gochi Hand', cursive;
+}
+
+.question{
+	border:0 none;
+	color: #C4D037;
+	background-color: white;
+}
+
+.question .questiontext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+.question:hover .questiontext {
+  visibility: visible;
+}
+
+#task2{
+	padding-top: 50%;
+}
+#wq2{
+	padding-top: 30%;
+}
+
+#task3{
+	padding-top: 100%;
+}
+#task4{
+	padding-top: 100%;
+}
+#wq3{
+	padding-top: 50%;
+}
+.confirm{
+	padding: 15px 30px;
+	background:#4D4D4D;
+	border:0 none;
+	cursor:pointer;
+	-webkit-border-radius:10px;
+	border-radius:5px;
+	font:bold 16pt;
+	color: white;
+	margin-left: 16%;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+.confirm:hover {
+  color: #4D4D4D;
+  border:2px silver;
+  background-color: white;
+}
+
+
+input[type=submit]{
+	padding: 15px 30px;
+	background:#4D4D4D;
+	border:0 none;
+	cursor:pointer;
+	-webkit-border-radius:10px;
+	border-radius:5px;
+	font:bold 16pt;
+	color: white;
+	margin-left: 16%;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+input:hover {
+  color: #4D4D4D;
+  border:2px silver;
+  background-color: white;
+}
+
+#comment{
+	text-align: center;
+}
+
+@media screen and (max-height: 450px) {
+  #sidebar {padding-top: 15px;}
+  #sidebar a {font-size: 18px;}
+}
