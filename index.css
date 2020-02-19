@@ -2,19 +2,6 @@ body{
 	margin: 0;
 }
 
-/*#task h1{
-	font-family: 'Oleo Script', cursive;
-	text-align: center;
-	color: white;
-	background-color: #C4D037;
-	border-radius: 10px;
-	size: 20px;
-	height: 60px;
-	line-height: 60px;
-	padding-left:20px;
-	margin-top: 10px;
-	width: 70%;
-}*/
 
 #sidebar h2{
 	padding-top: 30px;
@@ -24,20 +11,11 @@ body{
 	margin:0;
 }
 
-h3{
+h5{
 	padding-left: 12px;
 	font-family: 'Open Sans', sans-serif;
 }
 
-
-p{
-	font-family: 'Roboto', sans-serif;
-	font-size: 12pt;
-}
-
-ul{
-	font-family: 'Roboto', sans-serif;
-}
 img{
 	width: 400px;
 	height: auto;
@@ -60,6 +38,7 @@ img{
 	padding-top: 60px; /* Place content 60px from the top */
 	padding-left: 10px;
 	transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  font-family: 'Roboto', sans-serif;
 }
 
 
@@ -92,7 +71,7 @@ img{
   padding: 10px 15px;
   border: none;
   position: absolute;
-  top: 210px;
+  top: 180px;
   right: 10px;
   font-size: 18px;
   margin-left: 500px;
@@ -103,7 +82,56 @@ img{
   color: navy;
 }
 
+
+.page-header {
+	background-color: #f0f0f0;
+	padding: 20px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+	border-radius: 10px;
+}
+
+#context p{
+	color: #5e5e5e;
+	border-bottom: 1px solid silver;
+	margin-bottom: 20px;
+}
+
+#nextPageQuestion1 #nextPageQuestion2{
+  font-family:'Lato',sans-serif;
+}
+
 /*撤销及后退按钮格式*/
+.fontplus {
+  background-color: #35B8CC; 
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding:5px 5px;
+  width: 50%;
+  margin:3px;
+}
+
+.fontplus:hover {
+  background-color: #30A8BA;
+  cursor: pointer;
+}
+
+.fontminus {
+  background-color: #35B8CC; 
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding:5px 5px;
+  width: 50%;
+  margin:3px;
+}
+
+.fontminus:hover {
+  background-color: #30A8BA;
+  cursor: pointer;
+}
+
 .ud {
   background-color: #147BD1; 
   color: white;
@@ -155,12 +183,20 @@ img{
   visibility: visible;
 }
 
-#readText p{
-	border: 1px solid gray;
-	font-family: 'Lato', sans-serif;
+.col-md-4 p{
+	font-family: 'PT Serif', serif;
 	padding: 10px;
-	border-radius:5px;
+	/*border-radius:5px;
+	border-right: 1px solid gray;*/
 }
+.col-md-4 {
+	border-left: 2px solid #C4D037;
+}
+
+.col-md-6 p{
+  font-family: 'Lato', sans-serif;
+}          
+          
 
 .reason{
 	font:bold 15pt "Roboto";
@@ -173,8 +209,13 @@ img{
 	padding:15px;
 }
 
+.inputText {
+  display: flex;
+  justify-content: center;
+}
+
 textarea{
-	width: 80%;
+  width: 80%;
 	height: 50px;
 	border-radius:5px;
 	border:1px solid silver;
@@ -190,12 +231,13 @@ textarea{
 
 .question .questiontext {
   visibility: hidden;
-  width: 120px;
+  width: 180px;
   background-color: black;
   color: #fff;
   text-align: center;
   padding: 5px 0;
   border-radius: 6px;
+  font-size: 10pt;
  
   /* Position the tooltip text - see examples below! */
   position: absolute;
@@ -206,24 +248,29 @@ textarea{
   visibility: visible;
 }
 
-#task2{
-	padding-top: 50%;
+#task1 {
+	margin-top: -20%;
 }
+
+#task1 label {
+  margin: 0 auto;
+}
+
+.col-md-1{
+  margin-top: -10%;
+}
+
 #wq2{
 	padding-top: 30%;
 }
 
-#task3{
-	padding-top: 100%;
-}
-#task4{
-	padding-top: 100%;
-}
+
 #wq3{
 	padding-top: 50%;
 }
+
 .confirm{
-	padding: 15px 30px;
+	padding: 5px 20px;
 	background:#4D4D4D;
 	border:0 none;
 	cursor:pointer;
@@ -231,9 +278,11 @@ textarea{
 	border-radius:5px;
 	font:bold 16pt;
 	color: white;
-	margin-left: 16%;
+  margin:auto;
+  display: block;
+	/*margin-left: 16%;
 	margin-top: 20px;
-	margin-bottom: 30px;
+	margin-bottom: 30px;*/
 }
 .confirm:hover {
   color: #4D4D4D;
@@ -243,8 +292,8 @@ textarea{
 
 
 input[type=submit]{
-	padding: 15px 30px;
-	background:#4D4D4D;
+	padding: 5px 20px;
+	background:#C4D037;
 	border:0 none;
 	cursor:pointer;
 	-webkit-border-radius:10px;
@@ -256,7 +305,7 @@ input[type=submit]{
 	margin-bottom: 30px;
 }
 input:hover {
-  color: #4D4D4D;
+  color: #C4D137;
   border:2px silver;
   background-color: white;
 }

@@ -13,7 +13,6 @@ function closeNav() {
 //set the labelText function to P1
 document.getElementById('P1').addEventListener("mouseup", labelText);
 
-
 //num and text are for highlight, num calculate the number of highlight, text store the highlight text
 var num = 0;
 var text = [];
@@ -21,18 +20,43 @@ var text = [];
 //clickNum calculate the num of click on "Next" button
 var clickNum = 1;
 
+var sentenceText = document.getElementById('P1').innerText;
+
 //the highlight function
 function labelText()
 {
+  console.log(sentenceText);
 	var selection = window.getSelection();
 	var range = selection.getRangeAt(0);
-  //console.log(range);
+
+  var o = selection.anchorOffset;
+  var n = selection.anchorNode;
+  var n2 = selection.focusNode;
+
+  if (o != 0) {
+    while (range.toString().indexOf(' ') != 0 && range.startOffset != 0) {  
+      range.setStart(n, (range.startOffset - 1));
+    }
+    if (range.startOffset != 0) {
+      range.setStart(n, range.startOffset + 1);
+    }
+  }
+  
+  
+  while (!range.toString().endsWith(' ') && !range.toString().endsWith('.')) {
+    range.setEnd(n2, range.endOffset + 1);
+  }
+  range.setEnd(n2, range.endOffset - 1);
+  //console.log(range.toString().endsWith(' '));
+
+
+  //console.log(range.startContainer.wholeText);
   //console.log(range.startContainer.parentElement.nodeName);
 
   //get the number and the context of selection
-  let {anchorNode, anchorOffset, focusNode, focusOffset} = selection;
-  console.log(anchorOffset);
-  console.log(focusOffset);
+  // let {anchorNode, anchorOffset, focusNode, focusOffset} = selection;
+  // console.log(anchorOffset);
+  // console.log(focusOffset);
 
 	if (range.collapsed == false && range.startOffset != 1 && num < 2 && range.startContainer.parentElement.nodeName == "P") {
 		var node = document.createElement("span");
@@ -42,13 +66,34 @@ function labelText()
     //console.log(node);
 		num += 1;
 		range.surroundContents(node);
-		console.log(node.innerText);
+		console.log(sentenceText.indexOf(node.innerText));
+    console.log(sentenceText.indexOf(node.innerText) + node.innerText.length);
 
     text.push(node.innerText);
 
 	}
 	
 }
+
+
+	var curfontsize = 12; 
+
+	
+	function zoomin(){
+		if (curfontsize < 28){
+		curfontsize = curfontsize + 1;
+		document.getElementById('P1').style.fontSize = curfontsize +'pt';		
+		}
+	}
+	
+	
+	function zoomout(){
+		if(curfontsize > 10) {
+			curfontsize=curfontsize-1;
+			document.getElementById('P1').style.fontSize = curfontsize +'pt';
+		}
+	}
+
 
 function undo(){
   if(num >= 0){
@@ -80,6 +125,7 @@ function clearAll(){
 
 //var clickNum = 1;
 function show(){
+  console.log(clickNum);
   if (clickNum < 5) {
 
     text = [];
@@ -89,10 +135,11 @@ function show(){
     var pID = 'P' + clickNum.toString();
     document.getElementById(pID).removeEventListener("mouseup", labelText);
 
+
     //get the value from the textarea and store it to paragraph, and then display it
     q = document.getElementById('questionAsked').value;
     var questionTextID = 'nextPageQuestion' + clickNum.toString();
-    document.getElementById(questionTextID).innerText = "Your question is " + q;
+    document.getElementById(questionTextID).innerText = "Your question is " + "\n" + q;
     var questionID = '#yourQ' + clickNum.toString();
     $(questionID).toggle();
 
@@ -104,6 +151,9 @@ function show(){
     //set the function labelText of the next sentence, and then display it
     pID = 'P' + clickNum.toString();
     document.getElementById(pID).addEventListener("mouseup", labelText);
+
+    ppID = 'PP' + clickNum.toString();
+    sentenceText = document.getElementById(ppID).innerText;
     var paragraphID = '#P' + clickNum.toString();
     $(paragraphID).toggle();
 
@@ -114,14 +164,15 @@ function show(){
     var questionID = '#yourQ' + clickNum.toString();
     $(questionID).toggle();
 
+    pID = 'P' + clickNum.toString();
     document.getElementById(pID).removeEventListener("mouseup", labelText);
 
     $('#task1').toggle();
-    $('#wq1').toggle();
-    $('#wq2').toggle();
-    $('#wq3').toggle();
-    $('#wq4').toggle();
-    $('#wq5').toggle();
+    // $('#wq1').toggle();
+    // $('#wq2').toggle();
+    // $('#wq3').toggle();
+    // $('#wq4').toggle();
+    // $('#wq5').toggle();
     $('#s').toggle();
   }
 
