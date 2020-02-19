@@ -68,9 +68,11 @@
 			</div>
 
 		
-		<button class="openbtn" onclick="openNav()"> << Show instructions</button>
-		
-
+		<button id="openbtn" onclick="openNav()"> << Show instructions</button>
+		<button id="closebtn" onclick="closeNav()" style="display: none">Close instructions>></button>
+		<!-- <div class="alert alert-warning" role="alert">
+  This is a warning alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+</div> -->
 			<div class ="row"> <!-- context control-->
 					<div class="col-md-4">
 						<div id="context">
@@ -310,32 +312,42 @@
 	      		<div class="col-md-4"></div>
 
 	      		<div class="col-md-1">
-	      			<!-- <button class="fontplus" type="button" onclick="zoomin()"><i class="fas fa-plus"></i>
-	    			</button>
-	    			<button class="fontminus" type="button" onclick="zoomout()"><i class="fas fa-minus"></i>
-	    			</button> -->
 	    			<button class="ud" type="button" onclick="undo()">
 	    				<i class="fas fa-undo-alt"></i><span class="toolText">Undo your last mark</span>
 	    			</button>
 	    			<button class="ca" type="button" onclick="clearAll()">
 	    				<i class="fas fa-trash-alt"></i><span class="toolText">Clear all your marks</span>
 	    			</button>
+	    			<!-- <button class="fontplus" type="button" onclick="zoomin()"><i class="fas fa-plus"></i>
+	    			</button>
+	    			<button class="fontminus" type="button" onclick="zoomout()"><i class="fas fa-minus"></i>
+	    			</button> -->
 	    		</div>
 
 	      		<div class="col-md-7">
 	      			<div id="task1">
-						<label>Mark the words you felt vague and input 1 question to make it clear
+	      				<div class="card" style="width: 30rem;">
+	      					<div class="card-body">
+	      						<h5 class="card-title">Instructions</h5>
+	      						<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+	      						<p class="card-text">Do you find anything needs explanation in this sentence?</p>
+	      						<a href="#" class="card-link">Card link</a>
+	      						<a href="#" class="card-link">Another link</a>
+	      						<button class="confirm" onclick="show()">Next</button> <!-- 需要修改格式 -->
+	      					</div>
+	      				</div>
+						<!-- <label>Mark the words you felt vague and input 1 question to make it clear
 							<button class="question"><i class="fas fa-question-circle"></i>
 							<span class="questiontext">Click and drag on the unclear text to mark up</span>
 							</button>
 						</label>
 						<br>
 						<div class="inputText">
-						<textarea name="questionAsked" id="questionAsked"></textarea><!-- 需要修改格式 -->
+						<textarea name="questionAsked" id="questionAsked"></textarea>  需要修改格式 -->
 						</div>
-						<br>
+						<br> 
 
-						<button class="confirm" onclick="show()">Next</button> <!-- 需要修改格式 -->
+						
 					</div>
 				</div>
 			</div>

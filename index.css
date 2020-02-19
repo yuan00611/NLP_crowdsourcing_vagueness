@@ -64,7 +64,7 @@ img{
 }
 
 /*打开侧边栏按钮*/
-.openbtn {
+#openbtn {
   font-size: 20px;
   cursor: pointer;
   color: gray;
@@ -78,10 +78,27 @@ img{
   color: #4D4D4D;
 }
 
-.openbtn:hover {
+#openbtn:hover {
   color: navy;
 }
 
+#closebtn {
+  font-size: 20px;
+  cursor: pointer;
+  color: gray;
+  padding: 10px 15px;
+  border: none;
+  position: absolute;
+  top: 180px;
+  right: 10px;
+  font-size: 18px;
+  margin-left: 500px;
+  color: #4D4D4D;
+}
+
+#closebtn:hover {
+  color: navy;
+}
 
 .page-header {
 	background-color: #f0f0f0;
@@ -93,7 +110,6 @@ img{
 
 #context p{
 	color: #5e5e5e;
-	border-bottom: 1px solid silver;
 	margin-bottom: 20px;
 }
 
@@ -189,13 +205,14 @@ img{
 	/*border-radius:5px;
 	border-right: 1px solid gray;*/
 }
-.col-md-4 {
-	border-left: 2px solid #C4D037;
-}
 
 .col-md-6 p{
   font-family: 'Lato', sans-serif;
-}          
+}   
+
+.card {
+  box-shadow: 2px 2px 1px -1px rgba(0, 0, 0, 0.2), 2px 2px 1px -1px rgba(0, 0, 0, 0.14), 2px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}       
           
 
 .reason{
@@ -256,14 +273,9 @@ textarea{
   margin: 0 auto;
 }
 
-.col-md-1{
-  margin-top: -10%;
-}
-
 #wq2{
 	padding-top: 30%;
 }
-
 
 #wq3{
 	padding-top: 50%;

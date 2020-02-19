@@ -2,16 +2,22 @@
 function openNav() {
   document.getElementById("sidebar").style.width = "400px";
   document.getElementById("content").style.marginLeft = "400px";
+  $("#openbtn").toggle();
+  $("#closebtn").toggle();
 }
 
 /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
 function closeNav() {
   document.getElementById("sidebar").style.width = "0";
   document.getElementById("content").style.marginLeft = "0";
+  $("#closebtn").toggle();
+  $("#openbtn").toggle();
 }
+
 
 //set the labelText function to P1
 document.getElementById('P1').addEventListener("mouseup", labelText);
+document.getElementById('P1').style.borderLeft = "thick solid #C4D037";//格式
 
 //num and text are for highlight, num calculate the number of highlight, text store the highlight text
 var num = 0;
@@ -135,7 +141,6 @@ function show(){
     var pID = 'P' + clickNum.toString();
     document.getElementById(pID).removeEventListener("mouseup", labelText);
 
-
     //get the value from the textarea and store it to paragraph, and then display it
     q = document.getElementById('questionAsked').value;
     var questionTextID = 'nextPageQuestion' + clickNum.toString();
@@ -145,6 +150,8 @@ function show(){
 
     //clear the value of the textarea
     document.getElementById('questionAsked').value = '';
+    document.getElementById(pID).style.border = "none";
+    // document.getElementById(pID).style.backgroundColor ="#FFFFFF";
 
     clickNum += 1;
 
@@ -156,6 +163,8 @@ function show(){
     sentenceText = document.getElementById(ppID).innerText;
     var paragraphID = '#P' + clickNum.toString();
     $(paragraphID).toggle();
+    document.getElementById(pID).style.borderLeft = "thick solid #C4D037";
+    // document.getElementById(pID).style.backgroundColor = "#F8F8F8";
 
   }else if (clickNum == 5) {
     q = document.getElementById('questionAsked').value;
@@ -166,6 +175,8 @@ function show(){
 
     pID = 'P' + clickNum.toString();
     document.getElementById(pID).removeEventListener("mouseup", labelText);
+    document.getElementById(pID).style.border = "none";
+    // document.getElementById(pID).style.backgroundColor = "#FFFFFF";
 
     $('#task1').toggle();
     // $('#wq1').toggle();
