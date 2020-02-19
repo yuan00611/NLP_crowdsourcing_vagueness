@@ -64,7 +64,7 @@ function labelText()
   // console.log(anchorOffset);
   // console.log(focusOffset);
 
-	if (range.collapsed == false && range.startOffset != 1 && num < 2 && range.startContainer.parentElement.nodeName == "P") {
+	if (range.collapsed == false && range.startOffset != 1 && num < 3 && range.startContainer.parentElement.nodeName == "P") {
 		var node = document.createElement("span");
 		node.style.backgroundColor = 'yellow';
     var labelId = clickNum.toString() + num.toString();
@@ -76,6 +76,14 @@ function labelText()
     console.log(sentenceText.indexOf(node.innerText) + node.innerText.length);
 
     text.push(node.innerText);
+    var d = document.getElementById('inputcard');
+    var input = document.createElement("textarea");
+    input.setAttribute('id', 'questionAsked');
+    input.setAttribute('name', 'questionAsked');
+    var questiontext = document.createElement("p");
+    questiontext.innerText = "What is your question of the sentence?";
+    d.appendChild(questiontext);
+    d.appendChild(input);
 
 	}
 	
@@ -111,6 +119,11 @@ function undo(){
     text.pop();
     last.parentNode.removeChild(last);
 
+    var d = document.getElementById('inputcard');
+    d.removeChild(d.childNodes[1]);
+    d.removeChild(d.childNodes[0]);
+    
+
   }
 }
 
@@ -123,6 +136,10 @@ function clearAll(){
   
     text.pop();
     last.parentNode.removeChild(last);
+    var d = document.getElementById('inputcard');
+    d.removeChild(d.childNodes[1]);
+    d.removeChild(d.childNodes[0]);
+    
 
   }
   num = 0;
@@ -134,9 +151,7 @@ function show(){
   console.log(clickNum);
   if (clickNum < 5) {
 
-    text = [];
-    num = 0;
-
+  
     //remove the function labeText of the previous sentence
     var pID = 'P' + clickNum.toString();
     document.getElementById(pID).removeEventListener("mouseup", labelText);
@@ -148,8 +163,13 @@ function show(){
     var questionID = '#yourQ' + clickNum.toString();
     $(questionID).toggle();
 
+    clearAll();
+
+    text = [];
+    num = 0;
+
     //clear the value of the textarea
-    document.getElementById('questionAsked').value = '';
+    //document.getElementById('questionAsked').value = '';
     document.getElementById(pID).style.border = "none";
     // document.getElementById(pID).style.backgroundColor ="#FFFFFF";
 
