@@ -89,6 +89,15 @@ function labelText()
 	
 }
 
+function vagueConfirm(){
+  $("#chooseYes").toggle();
+  $("#chooseQuestion").toggle();
+}
+
+function vagueDecline(){
+  $("#chooseNo").toggle();
+  $("#chooseQuestion").toggle();
+}
 
 	var curfontsize = 12; 
 

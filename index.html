@@ -326,16 +326,36 @@
 
 	      		<div class="col-md-7">
 	      			<div id="task1">
+	      			<div id="chooseQuestion">	      				
 	      				<div class="card" style="width: 30rem;">
 	      					<div class="card-body" >
 	      						<h5 class="card-title">Instructions</h5>
-	      						<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
 	      						<p class="card-text">Do you find anything needs explanation in this sentence?</p>
-	      						<a href="#" class="card-link">Card link</a>
-	      						<a href="#" class="card-link">Another link</a>
+	      						<button class="btn btn-primary" onclick="vagueConfirm()">Yes</button>
+	      						<button class="btn btn-primary" onclick="vagueDecline()">No</button>
+	      					</div>
+	      				</div>
+	      			</div>
+	      				
+	      				<div id="chooseYes" style="display: none">
+	      					<div class="card" style="width: 30rem;">
+	      						<div class="card-body" >
+	      						<h5 class="card-title">Instructions</h5>
+	      						<p class="card-text">1. Highlight the text you feel not clear. <br>2. Input a question about the unclear text in the box appeared later.</p>
 	      						<div id="inputcard"></div>
+	      						<button class="confirm" onclick="show()"><i class="fas fa-arrow-right fa-lg"></i></button>
+								</div>
+							</div>
+	      				</div>
 
-	      						<button class="confirm" onclick="show()">Next</button> <!-- 需要修改格式 -->
+	      				<div id="chooseNo" style="display: none">
+	      					<div class="card" style="width: 30rem;">
+	      						<div class="card-body" >
+	      						<h5 class="card-title">Instructions</h5>
+	      						<p>Please type in "I found nothing vague here"</p>
+	      						<textarea name="noVague"></textarea>
+	      						<button class="btn btn-primary" onclick="vagueDecline()">Next</button>
+	      						</div>
 	      					</div>
 	      				</div>
 						<!-- <label>Mark the words you felt vague and input 1 question to make it clear

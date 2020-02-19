@@ -11,12 +11,12 @@ body{
 	margin:0;
 }
 
-h5{
+#sidebar h5{
 	padding-left: 12px;
 	font-family: 'Open Sans', sans-serif;
 }
 
-img{
+#sidebar img{
 	width: 400px;
 	height: auto;
 }
@@ -206,6 +206,9 @@ img{
 	border-right: 1px solid gray;*/
 }
 
+.col-md-1 {
+  padding:0px;
+}
 .col-md-6 p{
   font-family: 'Lato', sans-serif;
 }   
@@ -213,7 +216,9 @@ img{
 .card {
   box-shadow: 2px 2px 1px -1px rgba(0, 0, 0, 0.2), 2px 2px 1px -1px rgba(0, 0, 0, 0.14), 2px 2px 1px -1px rgba(0, 0, 0, 0.12);
 }       
-          
+.card-body{
+  margin:0 auto;
+}         
 
 .reason{
 	font:bold 15pt "Roboto";
@@ -282,23 +287,17 @@ textarea{
 }
 
 .confirm{
-	padding: 5px 20px;
-	background:#4D4D4D;
+  background-color: #FFFFFF;
 	border:0 none;
 	cursor:pointer;
-	-webkit-border-radius:10px;
-	border-radius:5px;
-	font:bold 16pt;
-	color: white;
+	color: grey;
   margin:auto;
   display: block;
-	/*margin-left: 16%;
-	margin-top: 20px;
-	margin-bottom: 30px;*/
+  font-size: 20px;
 }
+
 .confirm:hover {
-  color: #4D4D4D;
-  border:2px silver;
+  color: black;
   background-color: white;
 }
 
