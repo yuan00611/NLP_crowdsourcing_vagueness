@@ -18,7 +18,8 @@ function closeNav() {
 //set the labelText function to P1
 document.getElementById('P1').addEventListener("mouseup", labelText);
 document.getElementById('P1').style.borderLeft = "thick solid #C4D037";//格式
-
+// var position = document.getElementById('P1').screenX;
+//console.log(position);
 //num and text are for highlight, num calculate the number of highlight, text store the highlight text
 var num = 0;
 var text = [];
@@ -84,6 +85,9 @@ function labelText()
     questiontext.innerText = "What is your question of the sentence?";
     d.appendChild(questiontext);
     d.appendChild(input);
+    // if (num == 1){
+    //   $('#nextButton').toggle();
+    // }
 
 	}
 	
@@ -205,7 +209,6 @@ function show(){
     pID = 'P' + clickNum.toString();
     document.getElementById(pID).removeEventListener("mouseup", labelText);
     document.getElementById(pID).style.border = "none";
-    // document.getElementById(pID).style.backgroundColor = "#FFFFFF";
 
     $('#task1').toggle();
     // $('#wq1').toggle();

@@ -19,25 +19,24 @@
 
 	<div id="sidebar">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			<h2> Welcome</h2>
-			<p>Thank you for joining our research! Your involvement will help to improve understanding of context information.</p>
-			<p>Before starting to work on the task, please read carefully the following instructions.</p>
-
+		<h2> Welcome</h2>
+		<p>Thank you for joining our research! Your involvement will help to improve understanding of context information.</p>
+		<p>Before starting to work on the task, please read carefully the following instructions.</p>
 		<h2>Instruction</h2>
-			<h5>Guidance</h5>
-				<p>1. Highlight the part that you think is unclear.</p>
-				<p>2. Ask a question about the unclear part and click <i><b>submit</b></i>.</p>
-				<p>3. Decide whether your question is answered based on the next sentence.</p>
-				<p>4. Refer to Examples as follows.</p>
-			<h5>Operation</h5>
-				<ul>
-					<li>Click and drag to the end of words/phrases to highlight the elements you think are important.</li>
-					<br>
-					<li>You can change your selection by clicking the <i><b>undo last step</b></i> button to withdraw your last move, or the <i><b>clear all</b></i> button to redo the test.</li>
-				</ul>
-			<h5>Examples</h5>
+		<h5>Guidance</h5>
+			<p>1. Highlight the part that you think is unclear.</p>
+			<p>2. Ask a question about the unclear part and click <i><b>submit</b></i>.</p>
+			<p>3. Decide whether your question is answered based on the next sentence.</p>
+			<p>4. Refer to Examples as follows.</p>
+		<h5>Operation</h5>
+			<ul>
+				<li>Click and drag to the end of words/phrases to highlight the elements you think are important.</li>
+				<br>
+				<li>You can change your selection by clicking the <i><b>undo last step</b></i> button to withdraw your last move, or the <i><b>clear all</b></i> button to redo the test.</li>
+			</ul>
+		<h5>Examples</h5>
 		<br>
-				<table>
+		<table>
 					<tr>
 						<td>
 							<h6>Right example</h6>
@@ -343,7 +342,8 @@
 	      						<h5 class="card-title">Instructions</h5>
 	      						<p class="card-text">1. Highlight the text you feel not clear. <br>2. Input a question about the unclear text in the box appeared later.</p>
 	      						<div id="inputcard"></div>
-	      						<button class="confirm" onclick="show()"><i class="fas fa-arrow-right fa-lg"></i></button>
+	      						<div id="nextButton">
+	      							<button class="confirm" onclick="show()"><i class="fas fa-arrow-right fa-lg"></i></button>
 								</div>
 							</div>
 	      				</div>
@@ -354,7 +354,7 @@
 	      						<h5 class="card-title">Instructions</h5>
 	      						<p>Please type in "I found nothing vague here"</p>
 	      						<textarea name="noVague"></textarea>
-	      						<button class="btn btn-primary" onclick="vagueDecline()">Next</button>
+	      						<button class="btn btn-primary">Next</button>
 	      						</div>
 	      					</div>
 	      				</div>
