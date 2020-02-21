@@ -1,4 +1,26 @@
-// 打开侧边栏
+//----------------- set up of the starting --------------------------//
+
+//set the labelText function to P1
+document.getElementById('P1').addEventListener("mouseup", labelText);
+
+//style
+document.getElementById('P1').style.borderLeft = "thick solid #C4D037";//格式
+
+//position
+var position = document.getElementById('PP1').offsetTop;
+$('#chooseQuestion').offset({top: position});
+$('#returnbtn').offset({top: position});
+
+//num and text are for highlight, num calculate the number of highlight, text store the highlight text
+var num = 0;
+var text = [];
+
+//clickNum calculate the num of click on "Next" button
+var clickNum = 1;
+
+var sentenceText = document.getElementById('P1').innerText;
+
+//------------------ sidebar of the instructions ---------------------//
 function openNav() {
   document.getElementById("sidebar").style.width = "400px";
   document.getElementById("content").style.marginLeft = "400px";
@@ -14,28 +36,47 @@ function closeNav() {
   $("#openbtn").toggle();
 }
 
+//-------------------- zoom in / zoom out -------------------------//
+var curfontsize = 12; 
 
-//set the labelText function to P1
-document.getElementById('P1').addEventListener("mouseup", labelText);
-document.getElementById('P1').style.borderLeft = "thick solid #C4D037";//格式
-// var position = document.getElementById('P1').screenX;
-//console.log(position);
-//num and text are for highlight, num calculate the number of highlight, text store the highlight text
-var num = 0;
-var text = [];
+function zoomin(){
+  if (curfontsize < 28){
+    curfontsize = curfontsize + 1;
+    document.getElementById('P1').style.fontSize = curfontsize +'pt';   
+  }
+}
+  
+function zoomout(){
+  if(curfontsize > 10) {
+    curfontsize=curfontsize-1;
+    document.getElementById('P1').style.fontSize = curfontsize +'pt';
+  }
+}
 
-//clickNum calculate the num of click on "Next" button
-var clickNum = 1;
 
-var sentenceText = document.getElementById('P1').innerText;
+//-------------------- confirm btn func -------------------------//
+function vagueConfirm(){
+  $("#chooseYes").toggle();
+  $("#chooseQuestion").toggle();
+  $('#chooseYes').offset({top: position});
+}
 
-//the highlight function
+function vagueDecline(){
+  $("#chooseNo").toggle();
+  $("#chooseQuestion").toggle();
+  $('#chooseNo').offset({top: position});
+}
+
+
+//-------------------- highlight func -------------------------//
 function labelText()
 {
   console.log(sentenceText);
 	var selection = window.getSelection();
 	var range = selection.getRangeAt(0);
 
+
+  //solve the problem of the text --> to be entired
   var o = selection.anchorOffset;
   var n = selection.anchorNode;
   var n2 = selection.focusNode;
@@ -48,7 +89,6 @@ function labelText()
       range.setStart(n, range.startOffset + 1);
     }
   }
-  
   
   while (!range.toString().endsWith(' ') && !range.toString().endsWith('.')) {
     range.setEnd(n2, range.endOffset + 1);
@@ -93,35 +133,8 @@ function labelText()
 	
 }
 
-function vagueConfirm(){
-  $("#chooseYes").toggle();
-  $("#chooseQuestion").toggle();
-}
 
-function vagueDecline(){
-  $("#chooseNo").toggle();
-  $("#chooseQuestion").toggle();
-}
-
-	var curfontsize = 12; 
-
-	
-	function zoomin(){
-		if (curfontsize < 28){
-		curfontsize = curfontsize + 1;
-		document.getElementById('P1').style.fontSize = curfontsize +'pt';		
-		}
-	}
-	
-	
-	function zoomout(){
-		if(curfontsize > 10) {
-			curfontsize=curfontsize-1;
-			document.getElementById('P1').style.fontSize = curfontsize +'pt';
-		}
-	}
-
-
+//-------------------- highlight undo -------------------------//
 function undo(){
   if(num >= 0){
     num = num - 1;
@@ -140,6 +153,7 @@ function undo(){
   }
 }
 
+//-------------------- highlight clear-------------------------//
 function clearAll(){
   for(var j = num - 1; j >= 0; j--){
     var labelId = clickNum.toString() + j.toString();
@@ -159,11 +173,12 @@ function clearAll(){
 }
 
 
+
+
 //var clickNum = 1;
 function show(){
   console.log(clickNum);
   if (clickNum < 5) {
-
   
     //remove the function labeText of the previous sentence
     var pID = 'P' + clickNum.toString();
@@ -176,10 +191,14 @@ function show(){
     var questionID = '#yourQ' + clickNum.toString();
     $(questionID).toggle();
 
-    clearAll();
+    var d = document.getElementById('inputcard');
+    for(let i = 0; i <= d.childNodes.length; i++){
+      d.removeChild(d.childNodes[0]);
+    }
 
     text = [];
     num = 0;
+
 
     //clear the value of the textarea
     //document.getElementById('questionAsked').value = '';
@@ -198,6 +217,13 @@ function show(){
     $(paragraphID).toggle();
     document.getElementById(pID).style.borderLeft = "thick solid #C4D037";
     // document.getElementById(pID).style.backgroundColor = "#F8F8F8";
+
+    dID = 'd' + clickNum.toString();
+    position = document.getElementById(dID).offsetTop;
+    console.log(position);
+    $("#chooseYes").toggle();
+    $("#chooseQuestion").toggle();
+
 
   }else if (clickNum == 5) {
     q = document.getElementById('questionAsked').value;
@@ -221,4 +247,68 @@ function show(){
 
 }
 
+function declineNext(){
+  if (clickNum < 5) {
+  
+    //remove the function labeText of the previous sentence
+    var pID = 'P' + clickNum.toString();
+    document.getElementById(pID).removeEventListener("mouseup", labelText);
+
+    //get the value from the textarea and store it to paragraph, and then display it
+    var questionTextID = 'nextPageQuestion' + clickNum.toString();
+    document.getElementById(questionTextID).innerText = 'You found nothing vague here.';
+    var questionID = '#yourQ' + clickNum.toString();
+    $(questionID).toggle();
+
+    document.getElementById('noVague').value = '';
+
+    text = [];
+    num = 0;
+
+
+    //clear the value of the textarea
+    //document.getElementById('questionAsked').value = '';
+    document.getElementById(pID).style.border = "none";
+    // document.getElementById(pID).style.backgroundColor ="#FFFFFF";
+
+    clickNum += 1;
+
+    //set the function labelText of the next sentence, and then display it
+    pID = 'P' + clickNum.toString();
+    document.getElementById(pID).addEventListener("mouseup", labelText);
+
+    ppID = 'PP' + clickNum.toString();
+    sentenceText = document.getElementById(ppID).innerText;
+    var paragraphID = '#P' + clickNum.toString();
+    $(paragraphID).toggle();
+    document.getElementById(pID).style.borderLeft = "thick solid #C4D037";
+    // document.getElementById(pID).style.backgroundColor = "#F8F8F8";
+
+    dID = 'd' + clickNum.toString();
+    position = document.getElementById(dID).offsetTop;
+    console.log(position);
+    $("#chooseNo").toggle();
+    $("#chooseQuestion").toggle();
+
+
+  }else if (clickNum == 5) {
+    var questionTextID = 'nextPageQuestion' + clickNum.toString();
+    document.getElementById(questionTextID).innerText = 'You found nothing vague here.';
+    var questionID = '#yourQ' + clickNum.toString();
+    $(questionID).toggle();
+
+    pID = 'P' + clickNum.toString();
+    document.getElementById(pID).removeEventListener("mouseup", labelText);
+    document.getElementById(pID).style.border = "none";
+
+    $('#task1').toggle();
+    // $('#wq1').toggle();
+    // $('#wq2').toggle();
+    // $('#wq3').toggle();
+    // $('#wq4').toggle();
+    // $('#wq5').toggle();
+    $('#s').toggle();
+  }
+
+}
 
