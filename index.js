@@ -1,7 +1,7 @@
 //----------------- set up of the starting --------------------------//
 
 //set the labelText function to P1
-document.getElementById('P1').addEventListener("mouseup", labelText);
+//document.getElementById('P1').addEventListener("mouseup", labelText);
 
 //style
 document.getElementById('P1').style.borderLeft = "thick solid #C4D037";//格式
@@ -53,12 +53,13 @@ function zoomout(){
   }
 }
 
-
 //-------------------- confirm btn func -------------------------//
 function vagueConfirm(){
   $("#chooseYes").toggle();
   $("#chooseQuestion").toggle();
   $('#chooseYes').offset({top: position});
+  pID = 'P' + clickNum.toString();
+  document.getElementById(pID).addEventListener("mouseup", labelText);
 }
 
 function vagueDecline(){
@@ -66,6 +67,9 @@ function vagueDecline(){
   $("#chooseQuestion").toggle();
   $('#chooseNo').offset({top: position});
 }
+
+//-------------------- Next Button -------------------------//
+
 
 
 //-------------------- highlight func -------------------------//
@@ -117,12 +121,18 @@ function labelText()
     console.log(sentenceText.indexOf(node.innerText) + node.innerText.length);
 
     text.push(node.innerText);
+
+    if (num == 1) {
+      $('#nextButton').toggle();
+    }
+
+
     var d = document.getElementById('inputcard');
     var input = document.createElement("textarea");
-    input.setAttribute('id', 'questionAsked');
+    input.setAttribute('class', 'questionAsked');
     input.setAttribute('name', 'questionAsked');
     var questiontext = document.createElement("p");
-    questiontext.innerText = "What is your question of the sentence?";
+    questiontext.innerText = "What is your question of " + '\'' + node.innerText + '\'' + "?";
     d.appendChild(questiontext);
     d.appendChild(input);
     // if (num == 1){
@@ -149,7 +159,9 @@ function undo(){
     d.removeChild(d.childNodes[1]);
     d.removeChild(d.childNodes[0]);
     
-
+    if (num == 0) {
+      document.getElementById('nextButton').style.display = 'none';
+    }
   }
 }
 
@@ -170,6 +182,7 @@ function clearAll(){
 
   }
   num = 0;
+  document.getElementById('nextButton').style.display = 'none';
 }
 
 
@@ -184,12 +197,22 @@ function show(){
     var pID = 'P' + clickNum.toString();
     document.getElementById(pID).removeEventListener("mouseup", labelText);
 
-    //get the value from the textarea and store it to paragraph, and then display it
-    q = document.getElementById('questionAsked').value;
-    var questionTextID = 'nextPageQuestion' + clickNum.toString();
-    document.getElementById(questionTextID).innerText = "Your question is " + "\n" + q;
     var questionID = '#yourQ' + clickNum.toString();
+    //get the value from the textarea and store it to paragraph, and then display it
+    AllQues = document.getElementsByClassName('questionAsked');
+    for(let i = 0; i < AllQues.length; i++){
+      q = AllQues[i].value;
+      allQ = 'Your question for ' + '\''+ text[i] + '\'' + ' is ' + q;
+      pQ = "<p>" + allQ + "</p>";
+      $(questionID).append(pQ);
+    }
     $(questionID).toggle();
+
+    //q = document.getElementById('questionAsked').value;
+    //var questionTextID = 'nextPageQuestion' + clickNum.toString();
+    //document.getElementById(questionTextID).innerText = "Your question is " + "\n" + q;
+    
+    
 
     var d = document.getElementById('inputcard');
     for(let i = 0; i <= d.childNodes.length; i++){
@@ -198,7 +221,7 @@ function show(){
 
     text = [];
     num = 0;
-
+    document.getElementById('nextButton').style.display = 'none';
 
     //clear the value of the textarea
     //document.getElementById('questionAsked').value = '';
@@ -209,7 +232,7 @@ function show(){
 
     //set the function labelText of the next sentence, and then display it
     pID = 'P' + clickNum.toString();
-    document.getElementById(pID).addEventListener("mouseup", labelText);
+    //document.getElementById(pID).addEventListener("mouseup", labelText);
 
     ppID = 'PP' + clickNum.toString();
     sentenceText = document.getElementById(ppID).innerText;
@@ -226,11 +249,19 @@ function show(){
 
 
   }else if (clickNum == 5) {
-    q = document.getElementById('questionAsked').value;
-    var questionTextID = 'nextPageQuestion' + clickNum.toString();
-    document.getElementById(questionTextID).innerText = "Your question is " + q;
-    var questionID = '#yourQ' + clickNum.toString();
+    AllQues = document.getElementsByClassName('questionAsked');
+    for(let i = 0; i < AllQues.length; i++){
+      q = AllQues[i].value;
+      allQ = 'Your question for ' + text[i] + ' is ' + q;
+      pQ = "<p>" + allQ + "</p>";
+      $(questionID).append(pQ);
+    }
     $(questionID).toggle();
+    // q = document.getElementById('questionAsked').value;
+    // var questionTextID = 'nextPageQuestion' + clickNum.toString();
+    // document.getElementById(questionTextID).innerText = "Your question is " + q;
+    // var questionID = '#yourQ' + clickNum.toString();
+    // $(questionID).toggle();
 
     pID = 'P' + clickNum.toString();
     document.getElementById(pID).removeEventListener("mouseup", labelText);
