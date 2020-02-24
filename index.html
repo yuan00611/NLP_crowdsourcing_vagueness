@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Lato|Montserrat|Open+Sans|Raleway|Roboto|Source+Sans+Pro|PT+Sefif&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Lato|Montserrat|Open+Sans|PT+Serif|Raleway|Roboto|Source+Sans+Pro|Source+Serif+Pro&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/532f55454b.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -67,191 +67,75 @@
 			</div>
 
 		
-		<button id="openbtn" onclick="openNav()"> << Show instructions</button>
-		<button id="closebtn" onclick="closeNav()" style="display: none">Close instructions>></button>
+		<button id="openbtn" type="button" onclick="openNav()"> << Show instructions</button>
+		<button id="closebtn" type="button" onclick="closeNav()" style="display: none">Close instructions>></button>
+<!-- 		<button id="increaseFont" type="button" onclick="zoomin()">A+</button>
+		<button id="decreaseFont" type="button" onclick="zoomout()">A-</button> -->
 		<!-- <div class="alert alert-warning" role="alert">
   This is a warning alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
 </div> -->
 			<div class ="row"> <!-- context control-->
-					<div class="col-md-4">
+					<div class="col-md-5">
 						<div id="context">
 							<h3>Context</h3>
-							<p>By contrast, places such as Aberdeen, Dundee, Glasgow and Blackpool attributed one in 30 deaths to air pollution, highlighting what the study’s authors, the Centre for Cities thinktank, called a “south-north” divide in air quality.</p>
+							<p>More than one in 19 deaths in Britain’s largest towns and cities are linked to air pollution – with people living in urban areas in south-east England more likely to die from exposure to toxic air, according to a new study.</p>
 						</div>
 					</div>
 			</div>
 
 	  		<div class="row"> <!-- row 1 -->
 
-	    		<div class="col-md-4" id="PP1">
+	    		<div class="col-md-5" id="PP1">
 	      			<p id="P1">More than one in 19 deaths in Britain’s largest towns and cities are linked to air pollution – with people living in urban areas in south-east England more likely to die from exposure to toxic air, according to a new study.</p>
 				</div>
 
 				<div class="col-1"></div>
 
-			    <div class="col-md-7">
+			    <div class="col-md-6">
 			    	<div>
 			    		<div id="yourQ1" style="display: none">
 							<p id="nextPageQuestion1"></p>
 						</div>
 			    	</div>
 				</div>
-					
-					
-<!-- 				
-				<div class="col-md-3">			    	
-					<div id="wq1" style="display:none">
-						<p>Which sentence answers your first question?</p>
-						<input type="checkbox" name="yesno1">
-						<label>S2</label>
-						<input type="checkbox" name="yesno1">
-						<label>S3</label>
-						<input type="checkbox" name="yesno1">
-						<label>S4</label>
-						<input type="checkbox" name="yesno1">
-						<label>S5</label>
-						<input type="checkbox" name="yesno1">
-						<label>None of the above</label>
-					</div>
-					<div id="wq2" style="display:none">
-						<p>Which sentence answers your second question?</p>
-						<input type="checkbox" name="yesno2">
-						<label>S1</label>
-						<input type="checkbox" name="yesno2">
-						<label>S2</label>
-						<input type="checkbox" name="yesno2">
-						<label>S3</label>
-						<input type="checkbox" name="yesno2">
-						<label>S4</label>
-						<input type="checkbox" name="yesno2">
-						<label>S5</label>
-						<input type="checkbox" name="yesno2">
-						<label>None of the above</label>
-					</div>
-
-					
-					<div id="wq3" style="display:none">
-						<p>Which sentence answers your third question?</p>
-						<input type="checkbox" name="yesno3">
-						<label>S1</label>
-						<input type="checkbox" name="yesno3">
-						<label>S2</label>
-						<input type="checkbox" name="yesno3">
-						<label>S3</label>
-						<input type="checkbox" name="yesno3">
-						<label>S4</label>
-						<input type="checkbox" name="yesno">
-						<label>S5</label>
-						<input type="checkbox" name="yesno3">
-						<label>None of the above</label>
-					</div>
-
-					<div id="wq4" style="display:none">
-						<p>Which sentence answers your fourth question?</p>
-						<input type="checkbox" name="yesno4">
-						<label>S1</label>
-						<input type="checkbox" name="yesno4">
-						<label>S2</label>
-						<input type="checkbox" name="yesno4">
-						<label>S3</label>
-						<input type="checkbox" name="yesno4">
-						<label>S4</label>
-						<input type="checkbox" name="yesno4">
-						<label>S5</label>
-						<input type="checkbox" name="yesno4">
-						<label>None of the above</label>
-					</div>
-
-					<div id="wq5" style="display:none">
-						<p>Which sentence answers your fifth question?</p>
-						<input type="checkbox" name="yesno5">
-						<label>S1</label>
-						<input type="checkbox" name="yesno5">
-						<label>S2</label>
-						<input type="checkbox" name="yesno5">
-						<label>S3</label>
-						<input type="checkbox" name="yesno5">
-						<label>S4</label>
-						<input type="checkbox" name="yesno5">
-						<label>S5</label>
-						<input type="checkbox" name="yesno5">
-						<label>None of the above</label>
-					</div> 
-				</div>-->
 			</div>
 			
 			<div class="row"><!--Row 2-->
-				<div class="col-md-4" id="d2">
+				<div class="col-md-5" id="d2">
 					<div id="P2" style="display:none">
 	      				<p id = 'PP2'>London, Slough, Chatham, Luton and Portsmouth had the highest proportion of deaths attributable to pollution the study found, with around one in 16 in 2017 caused by high levels of harmful particulates in the atmosphere.</p>
 	      			</div>
 	      		</div>
 	      		<div class="col-md-1"></div>
-	      		<div class="col-md-7">
+	      		<div class="col-md-6">
 	      			<div id="yourQ2" style="display: none">
 						<p id="nextPageQuestion2"></p>
 					</div>	
 	      		</div>
-
-	      		<!-- <div class="col-md-">
-					<div id="wq2" style="display:none">
-						<p>Which sentence answers your second question?</p>
-						<input type="checkbox" name="yesno2">
-						<label>S1</label>
-						<input type="checkbox" name="yesno2">
-						<label>S2</label>
-						<input type="checkbox" name="yesno2">
-						<label>S3</label>
-						<input type="checkbox" name="yesno2">
-						<label>S4</label>
-						<input type="checkbox" name="yesno2">
-						<label>S5</label>
-						<input type="checkbox" name="yesno2">
-						<label>None of the above</label>
-					</div>
-	      		</div> -->
-	      	
 	      	</div>
 	      	
 	      	<div class="row"><!--Row 3-->
-	      		<div class="col-md-4" id="d3">
+	      		<div class="col-md-5" id="d3">
 	      			<div id="P3" style="display:none">
 	      					<p id = 'PP3'>By contrast, places such as Aberdeen, Dundee, Glasgow and Blackpool attributed one in 30 deaths to air pollution, highlighting what the study’s authors, the Centre for Cities thinktank, called a “south-north” divide in air quality.</p>
 	      			</div>
 	      		</div>
 	      		<div class="col-md-1"></div>
-	      		<div class="col-md-7">
+	      		<div class="col-md-6">
 	      			<div id="yourQ3" style="display: none">
 						<p id="nextPageQuestion3"></p>
 					</div>
 				</div>
-	      		<!-- <div class="col-md-3">
-	      			<div id="wq3" style="display:none">
-						<p>Which sentence answers your third question?</p>
-						<input type="checkbox" name="yesno3">
-						<label>S1</label>
-						<input type="checkbox" name="yesno3">
-						<label>S2</label>
-						<input type="checkbox" name="yesno3">
-						<label>S3</label>
-						<input type="checkbox" name="yesno3">
-						<label>S4</label>
-						<input type="checkbox" name="yesno">
-						<label>S5</label>
-						<input type="checkbox" name="yesno3">
-						<label>None of the above</label>
-					</div>
-	      		</div> -->
 	      	</div>
 
 	      	<div class="row"><!--Row 4-->
-	      		<div class="col-md-4" id="d4">
+	      		<div class="col-md-5" id="d4">
 	      			<div id="P4" style="display:none">
 	      				<p id = 'PP4'>By contrast, places such as Aberdeen, Dundee, Glasgow and Blackpool attributed one in 30 deaths to air pollution, highlighting what the study’s authors, the Centre for Cities thinktank, called a “south-north” divide in air quality.</p>
 	      			</div>
 	      		</div>
 	      		<div class="col-md-1"></div>
-	      		<div class="col-md-7">
+	      		<div class="col-md-6">
 	      			<div id="yourQ4" style="display: none">
 						<p id="nextPageQuestion4"></p>
 					</div>
@@ -276,39 +160,22 @@
 	      	</div>
 	      	
 	      	<div class="row"><!--Row 5-->
-	      		<div class="col-md-4" id="d5">
+	      		<div class="col-md-5" id="d5">
 	      			<div id="P5" style="display:none">
 	      				<p id = 'PP5'>By contrast, places such as Aberdeen, Dundee, Glasgow and Blackpool attributed one in 30 deaths to air pollution, highlighting what the study’s authors, the Centre for Cities thinktank, called a “south-north” divide in air quality.</p>
 	      			</div>
 	      		</div>
 
 	      		<div class="col-md-1"></div>
-	      		<div class="col-md-7">
+	      		<div class="col-md-6">
 	      			<div id="yourQ5" style="display: none">
 						<p id="nextPageQuestion5"></p>
 					</div>
 	      		</div>
-	      		<!-- <div class="col-md-3">
-					<div id="wq5" style="display:none">
-						<p>Which sentence answers your fifth question?</p>
-						<input type="checkbox" name="yesno5">
-						<label>S1</label>
-						<input type="checkbox" name="yesno5">
-						<label>S2</label>
-						<input type="checkbox" name="yesno5">
-						<label>S3</label>
-						<input type="checkbox" name="yesno5">
-						<label>S4</label>
-						<input type="checkbox" name="yesno5">
-						<label>S5</label>
-						<input type="checkbox" name="yesno5">
-						<label>None of the above</label>
-					</div>
-				</div> -->
 	      	</div>
 
 	      	<div class="row"><!--Row 6-->
-	      		<div class="col-md-4"></div>
+	      		<div class="col-md-5"></div>
 
 	      		<div class="col-md-1" id="returnbtn">
 	    			<button class="ud" type="button" onclick="undo()">
@@ -323,15 +190,17 @@
 	    			</button> -->
 	    		</div>
 
-	      		<div class="col-md-7">
+	      		<div class="col-md-6">
 	      			<div id="task1">
 	      			<div id="chooseQuestion">	      				
 	      				<div class="card" style="width: 30rem;">
 	      					<div class="card-body" >
 	      						<h5 class="card-title">Instructions</h5>
-	      						<p class="card-text">Do you find anything needs explanation in this sentence?</p>
-	      						<button class="btn btn-primary" onclick="vagueConfirm()">Yes</button>
-	      						<button class="btn btn-primary" onclick="vagueDecline()">No</button>
+	      						<p class="card-text">Do you find anything that needs explanation in this sentence?</p>
+	      						<div class="d-flex justify-content-around">
+	      							<button class="btn btn-primary" onclick="vagueConfirm()">Yes</button>
+	      							<button class="btn btn-primary" onclick="vagueDecline()">No</button>
+	      						</div>
 	      					</div>
 	      				</div>
 	      			</div>
@@ -376,10 +245,10 @@
 			</div>
 
 			<div class="row">
-				<div class = "col-md-4"></div>
+				<div class = "col-md-5"></div>
 				<div class="col-md-1">
 				</div>
-				<div class="col-md-7">
+				<div class="col-md-6">
 					<input type="submit" name="s" value="Submit" id="s" style="display: none;">
 				</div>
 			</div>

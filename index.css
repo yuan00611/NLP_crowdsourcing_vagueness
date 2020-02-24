@@ -100,6 +100,43 @@ body{
   color: navy;
 }
 
+/*#increaseFont {
+  font-size: 20px;
+  cursor: pointer;
+  color: #272727;
+  padding: 10px 15px;
+  border: none;
+  position: absolute;
+  top: 15em;
+  left: 10px;
+  font-size: 1.4em;
+  font-family: 'PT+Sefif',serif;
+  margin-right: 500px;
+  color: #4D4D4D;
+}
+#increaseFont:hover {
+  color: #C4D037
+}
+
+#decreaseFont {
+  font-size: 20px;
+  cursor: pointer;
+  color: #272727;
+  padding: 10px 15px;
+  border: none;
+  position: absolute;
+  top: 18em;
+  left: 10px;
+  font-size: 1.4em;
+  font-family: 'PT+Sefif',serif;
+  margin-right: 500px;
+  color: #4D4D4D;
+}
+
+#decreaseFont:hover {
+color: #C4D037;
+}
+*/
 .page-header {
 	background-color: #f0f0f0;
 	padding: 20px;
@@ -111,42 +148,21 @@ body{
 #context p{
 	color: #5e5e5e;
 	margin-bottom: 20px;
+  letter-spacing: 0.004em;
+  line-height: 1.5;
+  font-size: 18px;
+  font-weight:400;
+  font-family: 'Source Serif Pro',;
 }
 
 #nextPageQuestion1 #nextPageQuestion2{
   font-family:'Lato',sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.004em;
+  line-height: 1.5;
 }
 
 /*撤销及后退按钮格式*/
-.fontplus {
-  background-color: #35B8CC; 
-  color: white;
-  border: none;
-  border-radius: 3px;
-  padding:5px 5px;
-  width: 50%;
-  margin:3px;
-}
-
-.fontplus:hover {
-  background-color: #30A8BA;
-  cursor: pointer;
-}
-
-.fontminus {
-  background-color: #35B8CC; 
-  color: white;
-  border: none;
-  border-radius: 3px;
-  padding:5px 5px;
-  width: 50%;
-  margin:3px;
-}
-
-.fontminus:hover {
-  background-color: #30A8BA;
-  cursor: pointer;
-}
 
 .ud {
   background-color: #147BD1; 
@@ -189,7 +205,7 @@ body{
   /* Position the tooltip text - see examples below! */
   position: absolute;
   z-index: 1;
-  left:-120px;  
+  left:60px;  
 }
 
 .ud:hover .toolText {
@@ -199,9 +215,14 @@ body{
   visibility: visible;
 }
 
-.col-md-4 p{
+.col-md-5 p{
 	font-family: 'PT Serif', serif;
-	padding: 10px;
+  padding: 10px;
+  letter-spacing: 0.004em;
+  line-height: 1.5;
+  font-size: 18px;
+  font-weight:400;
+
 	/*border-radius:5px;
 	border-right: 1px solid gray;*/
 }
@@ -211,6 +232,9 @@ body{
 }
 .col-md-6 p{
   font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.004em;
+  line-height: 1.5;
 }   
 
 .card {
@@ -220,8 +244,11 @@ body{
   margin:0 auto;
 }         
 
+.card-body p{
+  font-size: 13pt;
+}
 .reason{
-	font:bold 15pt "Roboto";
+	font:bold 15pt 'Roboto';
 	padding:15px;
 }
 

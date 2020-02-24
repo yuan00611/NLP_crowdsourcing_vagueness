@@ -37,21 +37,21 @@ function closeNav() {
 }
 
 //-------------------- zoom in / zoom out -------------------------//
-var curfontsize = 12; 
+// var curfontsize = 18; 
 
-function zoomin(){
-  if (curfontsize < 28){
-    curfontsize = curfontsize + 1;
-    document.getElementById('P1').style.fontSize = curfontsize +'pt';   
-  }
-}
+// function zoomin(){
+//   if (curfontsize < 25){
+//     curfontsize = curfontsize + 1;
+//     document.getElementById('content').style.fontSize = curfontsize +'px';   
+//   }
+// }
   
-function zoomout(){
-  if(curfontsize > 10) {
-    curfontsize=curfontsize-1;
-    document.getElementById('P1').style.fontSize = curfontsize +'pt';
-  }
-}
+// function zoomout(){
+//   if(curfontsize > 10) {
+//     curfontsize=curfontsize-1;
+//     document.getElementById('P1').style.fontSize = curfontsize +'px';
+//   }
+// }
 
 //-------------------- confirm btn func -------------------------//
 function vagueConfirm(){
