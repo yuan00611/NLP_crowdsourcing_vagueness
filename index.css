@@ -222,6 +222,7 @@ color: #C4D037;
   line-height: 1.5;
   font-size: 18px;
   font-weight:400;
+  cursor: url('https://ionicframework.com/img/finger.png'), auto;
 
 	/*border-radius:5px;
 	border-right: 1px solid gray;*/
