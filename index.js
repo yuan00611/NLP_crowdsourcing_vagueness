@@ -306,7 +306,7 @@ function declineNext(){
 
     //set the function labelText of the next sentence, and then display it
     pID = 'P' + clickNum.toString();
-    document.getElementById(pID).addEventListener("mouseup", labelText);
+    //document.getElementById(pID).addEventListener("mouseup", labelText);
 
     ppID = 'PP' + clickNum.toString();
     sentenceText = document.getElementById(ppID).innerText;
