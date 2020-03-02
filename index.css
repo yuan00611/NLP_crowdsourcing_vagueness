@@ -154,6 +154,11 @@ color: #C4D037;
   font-weight:400;
   font-family: 'Source Serif Pro',;
 }
+#Instruct {
+  color:#5e5e5e;
+  box-shadow: 0px 0px 0px 0px;
+  border-color: white;
+}
 
 #nextPageQuestion1 #nextPageQuestion2{
   font-family:'Lato',sans-serif;
@@ -222,7 +227,7 @@ color: #C4D037;
   line-height: 1.5;
   font-size: 18px;
   font-weight:400;
-  cursor: url('https://ionicframework.com/img/finger.png'), auto;
+  /*cursor: url('https://ionicframework.com/img/finger.png'), auto;*/
 
 	/*border-radius:5px;
 	border-right: 1px solid gray;*/

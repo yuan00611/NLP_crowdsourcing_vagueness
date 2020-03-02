@@ -3,22 +3,47 @@
 //set the labelText function to P1
 //document.getElementById('P1').addEventListener("mouseup", labelText);
 
-//style
-document.getElementById('P1').style.borderLeft = "thick solid #C4D037";//格式
-
 //position
 var position = document.getElementById('PP1').offsetTop;
 $('#chooseQuestion').offset({top: position});
 $('#returnbtn').offset({top: position});
 
+var position2 = document.getElementById('c1').offsetTop + 50;
+$('#Instruct').offset({top: position2});
+
 //num and text are for highlight, num calculate the number of highlight, text store the highlight text
 var num = 0;
 var text = [];
+var textNum = [];
+
+//for retrieve 
+var returnText = [];
+var returnNum = [];
+var returnQuestion = [];
 
 //clickNum calculate the num of click on "Next" button
 var clickNum = 1;
 
 var sentenceText = document.getElementById('P1').innerText;
+
+//no buttom show up
+window.setTimeout(showDeclineButton, 5000);
+
+//---------------------- set up for AMTurk --------------------------//
+
+var content = turkGetParam('content');
+var s1 = turkGetParam('s1');
+var s2 = turkGetParam('s2');
+var s3 = turkGetParam('s3');
+var s4 = turkGetParam('s4');
+var s5 = turkGetParam('s5');
+
+document.getElementById('c').value = decodeURI(content);
+document.getElementById('P1').value = decodeURI(s1);
+document.getElementById('PP2').value = decodeURI(s2);
+document.getElementById('PP3').value = decodeURI(s3);
+document.getElementById('PP4').value = decodeURI(s4);
+document.getElementById('PP5').value = decodeURI(s5);
 
 //------------------ sidebar of the instructions ---------------------//
 function openNav() {
@@ -60,12 +85,27 @@ function vagueConfirm(){
   $('#chooseYes').offset({top: position});
   pID = 'P' + clickNum.toString();
   document.getElementById(pID).addEventListener("mouseup", labelText);
+  document.getElementById(pID).style.borderLeft = "thick solid #C4D037";//格式
+  document.getElementById('next').style.display = "none";
+  document.getElementById('anotherH').style.display = "none";
 }
 
 function vagueDecline(){
   $("#chooseNo").toggle();
   $("#chooseQuestion").toggle();
   $('#chooseNo').offset({top: position});
+}
+
+function showDeclineButton(){
+  $("#no").toggle();
+}
+
+function anotherHighlight(){
+  pID = 'P' + clickNum.toString();
+  document.getElementById(pID).addEventListener("mouseup", labelText);
+  document.getElementById(pID).style.borderLeft = "thick solid #C4D037";
+  document.getElementById('anotherH').style.display = "none";
+  document.getElementById('next').style.display = "none";
 }
 
 //-------------------- Next Button -------------------------//
@@ -92,12 +132,13 @@ function labelText()
     if (range.startOffset != 0) {
       range.setStart(n, range.startOffset + 1);
     }
+    while (!range.toString().endsWith(' ') && !range.toString().endsWith('.')) {
+      range.setEnd(n2, range.endOffset + 1);
+    }
+    range.setEnd(n2, range.endOffset - 1);
   }
   
-  while (!range.toString().endsWith(' ') && !range.toString().endsWith('.')) {
-    range.setEnd(n2, range.endOffset + 1);
-  }
-  range.setEnd(n2, range.endOffset - 1);
+  
   //console.log(range.toString().endsWith(' '));
 
 
@@ -121,6 +162,8 @@ function labelText()
     console.log(sentenceText.indexOf(node.innerText) + node.innerText.length);
 
     text.push(node.innerText);
+    textNum.push(sentenceText.indexOf(node.innerText));
+    textNum.push(sentenceText.indexOf(node.innerText) + node.innerText.length);
 
     if (num == 1) {
       $('#nextButton').toggle();
@@ -139,6 +182,14 @@ function labelText()
     //   $('#nextButton').toggle();
     // }
 
+    pID = 'P' + clickNum.toString();
+    document.getElementById(pID).removeEventListener("mouseup", labelText);
+    document.getElementById(pID).style.border = "none";
+    $('#next').toggle();
+    if (num < 3) {
+      $('#anotherH').toggle();
+    }
+    
 	}
 	
 }
@@ -146,6 +197,7 @@ function labelText()
 
 //-------------------- highlight undo -------------------------//
 function undo(){
+  anotherHighlight();
   if(num >= 0){
     num = num - 1;
     var labelId = clickNum.toString() + num.toString();
@@ -154,6 +206,9 @@ function undo(){
   
     text.pop();
     last.parentNode.removeChild(last);
+
+    textNum.pop();
+    textNum.pop();
 
     var d = document.getElementById('inputcard');
     d.removeChild(d.childNodes[1]);
@@ -167,6 +222,7 @@ function undo(){
 
 //-------------------- highlight clear-------------------------//
 function clearAll(){
+  anotherHighlight();
   for(var j = num - 1; j >= 0; j--){
     var labelId = clickNum.toString() + j.toString();
     last = document.getElementById(labelId);
@@ -175,6 +231,10 @@ function clearAll(){
   
     text.pop();
     last.parentNode.removeChild(last);
+
+    textNum.pop();
+    textNum.pop();
+
     var d = document.getElementById('inputcard');
     d.removeChild(d.childNodes[1]);
     d.removeChild(d.childNodes[0]);
@@ -205,6 +265,8 @@ function show(){
       allQ = 'Your question for ' + '\''+ text[i] + '\'' + ' is ' + q;
       pQ = "<p>" + allQ + "</p>";
       $(questionID).append(pQ);
+
+      returnQuestion.push(q);
     }
     $(questionID).toggle();
 
@@ -215,13 +277,23 @@ function show(){
     
 
     var d = document.getElementById('inputcard');
-    for(let i = 0; i <= d.childNodes.length; i++){
+    while (d.childNodes.length != 0) {
       d.removeChild(d.childNodes[0]);
     }
+    // for(let i = 0; i <= d.childNodes.length; i++){
+      
+    // }
+
+    returnText.push(text);
+    returnNum.push(textNum);
+
 
     text = [];
     num = 0;
+
     document.getElementById('nextButton').style.display = 'none';
+    document.getElementById('no').style.display = 'none';
+    window.setTimeout(showDeclineButton, 5000);
 
     //clear the value of the textarea
     //document.getElementById('questionAsked').value = '';
@@ -238,7 +310,7 @@ function show(){
     sentenceText = document.getElementById(ppID).innerText;
     var paragraphID = '#P' + clickNum.toString();
     $(paragraphID).toggle();
-    document.getElementById(pID).style.borderLeft = "thick solid #C4D037";
+    //document.getElementById(pID).style.borderLeft = "thick solid #C4D037";
     // document.getElementById(pID).style.backgroundColor = "#F8F8F8";
 
     dID = 'd' + clickNum.toString();
@@ -255,6 +327,8 @@ function show(){
       allQ = 'Your question for ' + text[i] + ' is ' + q;
       pQ = "<p>" + allQ + "</p>";
       $(questionID).append(pQ);
+
+      returnQuestion.push(q);
     }
     $(questionID).toggle();
     // q = document.getElementById('questionAsked').value;
@@ -296,11 +370,14 @@ function declineNext(){
     text = [];
     num = 0;
 
+    document.getElementById('nextButton').style.display = 'none';
 
     //clear the value of the textarea
     //document.getElementById('questionAsked').value = '';
     document.getElementById(pID).style.border = "none";
     // document.getElementById(pID).style.backgroundColor ="#FFFFFF";
+    document.getElementById('no').style.display = 'none';
+    window.setTimeout(showDeclineButton, 5000);
 
     clickNum += 1;
 
@@ -312,12 +389,12 @@ function declineNext(){
     sentenceText = document.getElementById(ppID).innerText;
     var paragraphID = '#P' + clickNum.toString();
     $(paragraphID).toggle();
-    document.getElementById(pID).style.borderLeft = "thick solid #C4D037";
+    //document.getElementById(pID).style.borderLeft = "thick solid #C4D037";
     // document.getElementById(pID).style.backgroundColor = "#F8F8F8";
 
     dID = 'd' + clickNum.toString();
     position = document.getElementById(dID).offsetTop;
-    console.log(position);
+    //console.log(position);
     $("#chooseNo").toggle();
     $("#chooseQuestion").toggle();
 
@@ -342,4 +419,16 @@ function declineNext(){
   }
 
 }
+
+var form = document.querySelector("form");
+form.onsubmit = function(e){
+  e.preventDefault();
+
+  document.getElementById("reportId_text").value = JSON.stringify(returnText);
+  document.getElementById("reportId_num").value = JSON.stringify(returnNum);
+  document.getElementById("reportId_question").value = JSON.stringify(returnQuestion);
+
+}
+
+
 
