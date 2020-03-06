@@ -273,19 +273,19 @@ color: #C4D037;
   cursor: pointer;
 }
 
-#inputcard {
-  width: 30rem;
-  align-items: center;
+.verticalCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
 }
 
 .buttonControl {
   margin-top: 16px;
   display: flex;
+  width: 25rem;
   justify-content: space-around;
-  flex-wrap: wrap;
-  width: 30em;
   align-items: center;
-  margin: 0 auto;
 }
 
 .comment{
@@ -293,17 +293,12 @@ color: #C4D037;
 	padding:15px;
 }
 
-button {
-  margin-top: 16px;
-}
-
-textarea{
-  width: 80%;
+textarea {
+  width: 25rem;
 	height: 50px;
-	border-radius:5px;
+	border-radius: .25rem;
 	border:1px solid silver;
 	font-size: 14pt;
-	font-family: 'Gochi Hand', cursive;
 }
 
 .question{
