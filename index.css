@@ -71,15 +71,16 @@ body{
   padding: 10px 15px;
   border: none;
   position: absolute;
-  top: 180px;
+  top: 140px;
   right: 10px;
   font-size: 18px;
   margin-left: 500px;
   color: #4D4D4D;
+  font-family:'Lato',sans-serif;
 }
 
 #openbtn:hover {
-  color: navy;
+  color: #007bff;
 }
 
 #closebtn {
@@ -89,15 +90,16 @@ body{
   padding: 10px 15px;
   border: none;
   position: absolute;
-  top: 180px;
+  top: 140px;
   right: 10px;
   font-size: 18px;
   margin-left: 500px;
   color: #4D4D4D;
+  font-family:'Lato',sans-serif;
 }
 
 #closebtn:hover {
-  color: navy;
+  color: #007bff;
 }
 
 /*#increaseFont {
@@ -152,12 +154,19 @@ color: #C4D037;
   line-height: 1.5;
   font-size: 18px;
   font-weight:400;
-  font-family: 'Source Serif Pro',;
+  font-family: 'Source Serif Pro', serif;
+  border-bottom: 0.5px solid silver;
 }
+
+
 #Instruct {
   color:#5e5e5e;
   box-shadow: 0px 0px 0px 0px;
-  border-color: white;
+  border: 0.5px solid #DFDFDF;
+  padding: 16px;
+  width: 30em;
+  border-radius: 5px;
+  font-size: 18px;
 }
 
 #nextPageQuestion1 #nextPageQuestion2{
@@ -170,7 +179,7 @@ color: #C4D037;
 /*撤销及后退按钮格式*/
 
 .ud {
-  background-color: #147BD1; 
+  background-color: #007bff; 
   color: white;
   border: none;
   border-radius: 3px;
@@ -180,7 +189,7 @@ color: #C4D037;
 }
 
 .ud:hover {
-  background-color: #0076A8;
+  background-color: #0069D9;
   cursor: pointer;
 }
 
@@ -221,7 +230,7 @@ color: #C4D037;
 }
 
 .col-md-5 p{
-	font-family: 'PT Serif', serif;
+	font-family: 'Source Serif Pro', serif;
   padding: 10px;
   letter-spacing: 0.004em;
   line-height: 1.5;
@@ -238,7 +247,7 @@ color: #C4D037;
 }
 .col-md-6 p{
   font-family: 'Lato', sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   letter-spacing: 0.004em;
   line-height: 1.5;
 }   
@@ -253,20 +262,39 @@ color: #C4D037;
 .card-body p{
   font-size: 13pt;
 }
-.reason{
-	font:bold 15pt 'Roboto';
-	padding:15px;
+
+.btn.btn-secondary {
+  background-color: #A7A8A9;
+  border: none;
 }
 
+.btn.btn-secondary:hover {
+  background-color: #888B8D;
+  cursor: pointer;
+}
+
+#inputcard {
+  width: 30rem;
+  align-items: center;
+}
+
+.buttonControl {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 30em;
+  align-items: center;
+  margin: 0 auto;
+}
 
 .comment{
 	font:bold 15pt "Roboto";
 	padding:15px;
 }
 
-.inputText {
-  display: flex;
-  justify-content: center;
+button {
+  margin-top: 16px;
 }
 
 textarea{
