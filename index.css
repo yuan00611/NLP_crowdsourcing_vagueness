@@ -22,10 +22,9 @@ body{
 }
 
 #sidebar {
-	list-style-type: none;
 	margin: 0;
 	height: 100%; /* 100% Full-height */
-	width: 0;
+	width: 400px;
 	background-color: #F2F2F2;
 	position: fixed;
 	z-index: 1; /* Stay on top */
@@ -61,6 +60,7 @@ body{
 	height:1000px;
 	transition: margin-left .5s; /* If you want a transition effect */
 	padding: 20px;
+  margin-left: 400px;
 }
 
 /*打开侧边栏按钮*/
