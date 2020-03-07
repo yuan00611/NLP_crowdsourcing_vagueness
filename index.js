@@ -7,7 +7,7 @@ var s3 = turkGetParam('s3');
 var s4 = turkGetParam('s4');
 var s5 = turkGetParam('s5');
 
-console.log(s1);
+//console.log(s1);
 
 document.getElementById('c').innerHTML = decodeURI(content);
 document.getElementById('P1').innerHTML = decodeURI(s1);
@@ -31,6 +31,9 @@ $('#returnbtn').offset({top: position});
 
 var position2 = document.getElementById('c1').offsetTop + 50;
 $('#Instruct').offset({top: position2});
+
+//left line
+document.getElementById(pID).style.borderLeft = "thick solid #C4D037";
 
 //num and text are for highlight, num calculate the number of highlight, text store the highlight text
 var num = 0;
@@ -83,13 +86,16 @@ function closeNav() {
 // }
 
 //-------------------- confirm btn func -------------------------//
+function showDeclineButton(){
+  $("#no").toggle();
+}
+
 function vagueConfirm(){
   $("#chooseYes").toggle();
   $("#chooseQuestion").toggle();
   $('#chooseYes').offset({top: position});
   pID = 'P' + clickNum.toString();
   document.getElementById(pID).addEventListener("mouseup", labelText);
-  document.getElementById(pID).style.borderLeft = "thick solid #C4D037";//格式
   document.getElementById('next').style.display = "none";
   document.getElementById('anotherH').style.display = "none";
 }
@@ -100,8 +106,11 @@ function vagueDecline(){
   $('#chooseNo').offset({top: position});
 }
 
-function showDeclineButton(){
-  $("#no").toggle();
+
+//-------------------- Question Button -------------------------//
+
+function inputCheck(){
+  
 }
 
 function anotherHighlight(){
@@ -112,7 +121,7 @@ function anotherHighlight(){
   document.getElementById('next').style.display = "none";
 }
 
-//-------------------- Next Button -------------------------//
+
 
 
 
