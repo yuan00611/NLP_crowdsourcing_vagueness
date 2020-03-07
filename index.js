@@ -9,12 +9,12 @@ var s5 = turkGetParam('s5');
 
 //console.log(s1);
 
-document.getElementById('c').innerHTML = decodeURI(content);
-document.getElementById('P1').innerHTML = decodeURI(s1);
-document.getElementById('PP2').innerHTML = decodeURI(s2);
-document.getElementById('PP3').innerHTML = decodeURI(s3);
-document.getElementById('PP4').innerHTML = decodeURI(s4);
-document.getElementById('PP5').innerHTML = decodeURI(s5);
+// document.getElementById('c').innerHTML = decodeURI(content);
+// document.getElementById('P1').innerHTML = decodeURI(s1);
+// document.getElementById('PP2').innerHTML = decodeURI(s2);
+// document.getElementById('PP3').innerHTML = decodeURI(s3);
+// document.getElementById('PP4').innerHTML = decodeURI(s4);
+// document.getElementById('PP5').innerHTML = decodeURI(s5);
 
 turkSetAssignmentID();
 
@@ -33,7 +33,7 @@ var position2 = document.getElementById('c1').offsetTop + 50;
 $('#Instruct').offset({top: position2});
 
 //left line
-document.getElementById(pID).style.borderLeft = "thick solid #C4D037";
+document.getElementById("P1").style.borderLeft = "thick solid #C4D037";
 
 //num and text are for highlight, num calculate the number of highlight, text store the highlight text
 var num = 0;
@@ -51,7 +51,7 @@ var clickNum = 1;
 var sentenceText = document.getElementById('P1').innerText;
 
 //no buttom show up
-window.setTimeout(showDeclineButton, 5000);
+window.setTimeout(showDeclineButton, 10000);
 
 //------------------ sidebar of the instructions ---------------------//
 function openNav() {
@@ -101,22 +101,55 @@ function vagueConfirm(){
 }
 
 function vagueDecline(){
-  $("#chooseNo").toggle();
-  $("#chooseQuestion").toggle();
-  $('#chooseNo').offset({top: position});
+  var novagarea = document.getElementById('noVague');
+  if (novagarea.value != "") {
+    $("#chooseNo").toggle();
+    $("#chooseQuestion").toggle();
+    $('#chooseNo').offset({top: position});
+  }
+  
 }
 
 
 //-------------------- Question Button -------------------------//
 
 function inputCheck(){
-  
+  var checked = true;
+
+  AllQues = document.getElementsByClassName('questionAsked');
+  for(let i = 0; i < AllQues.length; i++){
+    if (AllQues[i].value == "" || AllQues[i].value.length < 10) {
+      checked = false;
+      //alert("all question should have input");
+    }
+  }
+
+  var wordCheck = false;
+  questionCheckWord = ['What', 'what', 'Where', 'where', 'When', 'when', 'Who', 'who', 'Why', 'why', 'Which', 'which', 'Is', 'is', 'Are', 'are', '?']
+  for(let i = 0; i < questionCheckWord.length; i++){
+    if (AllQues[AllQues.length - 1].value.toString().includes(questionCheckWord[i])) {
+      wordCheck = true;      
+    }
+  }
+  if (!wordCheck || !checked) {
+    alert("all questions should be a well-structured question!");
+  }else if (checked && wordCheck) {
+    $('#nextButton').toggle();
+    $('#next').toggle();
+    document.getElementById('confirmInput').style.display = "none";
+    if (num < 3) {
+      $('#anotherH').toggle();
+    }
+
+  }
+      
 }
 
 function anotherHighlight(){
   pID = 'P' + clickNum.toString();
   document.getElementById(pID).addEventListener("mouseup", labelText);
-  document.getElementById(pID).style.borderLeft = "thick solid #C4D037";
+  //document.getElementById(pID).style.borderLeft = "thick solid #C4D037";
+  document.getElementById('nextButton').style.display = "none";
   document.getElementById('anotherH').style.display = "none";
   document.getElementById('next').style.display = "none";
 }
@@ -163,7 +196,11 @@ function labelText()
   // console.log(anchorOffset);
   // console.log(focusOffset);
 
-	if (range.collapsed == false && range.startOffset != 1 && num < 3 && range.startContainer.parentElement.nodeName == "P") {
+  if (range.toString().length > 50) {
+    alert('You can\'t hightlight too much word!');
+  }
+
+	if (range.collapsed == false && num < 3 && range.startContainer.parentElement.nodeName == "P" && range.toString().length < 50) {
 		var node = document.createElement("span");
 		node.style.backgroundColor = 'rgba(255,204,0,0.6)';
     var labelId = clickNum.toString() + num.toString();
@@ -171,17 +208,15 @@ function labelText()
     //console.log(node);
 		num += 1;
 		range.surroundContents(node);
-		console.log(sentenceText.indexOf(node.innerText));
-    console.log(sentenceText.indexOf(node.innerText) + node.innerText.length);
+		//console.log(sentenceText.indexOf(node.innerText));
+    //console.log(sentenceText.indexOf(node.innerText) + node.innerText.length);
 
     text.push(node.innerText);
     textNum.push(sentenceText.indexOf(node.innerText));
     textNum.push(sentenceText.indexOf(node.innerText) + node.innerText.length);
 
-    if (num == 1) {
-      $('#nextButton').toggle();
-      $('#confirmInput').toggle();
-    }
+    $('#confirmInput').toggle();
+
 
 
     var d = document.getElementById('inputcard');
@@ -198,11 +233,9 @@ function labelText()
 
     pID = 'P' + clickNum.toString();
     document.getElementById(pID).removeEventListener("mouseup", labelText);
-    document.getElementById(pID).style.border = "none";
-    $('#next').toggle();
-    if (num < 3) {
-      $('#anotherH').toggle();
-    }
+    //document.getElementById(pID).style.border = "none";
+    //$('#next').toggle();
+    
     
 	}
 	
@@ -227,6 +260,8 @@ function undo(){
     var d = document.getElementById('inputcard');
     d.removeChild(d.childNodes[1]);
     d.removeChild(d.childNodes[0]);
+
+    document.getElementById('confirmInput').style.display = 'none';
     
     if (num == 0) {
       document.getElementById('nextButton').style.display = 'none';
@@ -264,7 +299,7 @@ function clearAll(){
 
 //var clickNum = 1;
 function show(){
-  console.log(clickNum);
+  //console.log(clickNum);
   if (clickNum < 5) {
   
     //remove the function labeText of the previous sentence
@@ -303,6 +338,7 @@ function show(){
 
 
     text = [];
+    textNum = [];
     num = 0;
 
     document.getElementById('nextButton').style.display = 'none';
@@ -311,7 +347,7 @@ function show(){
 
     //clear the value of the textarea
     // document.getElementById('questionAsked').value = '';
-    // document.getElementById(pID).style.border = "none";
+     document.getElementById(pID).style.border = "none";
     // document.getElementById(pID).style.backgroundColor ="#FFFFFF";
 
     clickNum += 1;
@@ -324,17 +360,18 @@ function show(){
     sentenceText = document.getElementById(ppID).innerText;
     var paragraphID = '#P' + clickNum.toString();
     $(paragraphID).toggle();
-    //document.getElementById(pID).style.borderLeft = "thick solid #C4D037";
+    document.getElementById(pID).style.borderLeft = "thick solid #C4D037";
     // document.getElementById(pID).style.backgroundColor = "#F8F8F8";
 
     dID = 'd' + clickNum.toString();
     position = document.getElementById(dID).offsetTop;
-    console.log(position);
+    //console.log(position);
     $("#chooseYes").toggle();
     $("#chooseQuestion").toggle();
 
 
   }else if (clickNum == 5) {
+    var questionID = '#yourQ' + clickNum.toString();
     AllQues = document.getElementsByClassName('questionAsked');
     for(let i = 0; i < AllQues.length; i++){
       q = AllQues[i].value;
@@ -356,11 +393,6 @@ function show(){
     document.getElementById(pID).style.border = "none";
 
     $('#task1').toggle();
-    // $('#wq1').toggle();
-    // $('#wq2').toggle();
-    // $('#wq3').toggle();
-    // $('#wq4').toggle();
-    // $('#wq5').toggle();
     $('#s').toggle();
   }
 
@@ -441,6 +473,10 @@ form.onsubmit = function(e){
   document.getElementById("reportId_text").value = JSON.stringify(returnText);
   document.getElementById("reportId_num").value = JSON.stringify(returnNum);
   document.getElementById("reportId_question").value = JSON.stringify(returnQuestion);
+
+  // console.log(returnText);
+  // console.log(returnNum);
+  // console.log(returnQuestion);
 
   form.submit();
 
