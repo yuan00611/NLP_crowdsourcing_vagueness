@@ -95,16 +95,9 @@
 				<div class="col-1"></div>
 
 			    <div class="col-md-6">
-			    	<div>
-			    		<div id="Instruct" >
-							<div class="card" style="width: 30rem;">
-	      					<div class="card-body" >
-	      						<!-- <h5 class="card-title">Instructions</h5> -->
-	      						<p class="card-text">Do you find anything that needs explanation?</p>
-	      						<p class="card-text">1. Highlight the text you feel not clear. <br>2. Input a question about the unclear text in the box appeared later.</p>
-	      					</div>
-	      					</div>
-						</div>
+			    	<div id="Instruct" style="width: 30rem;">
+			    			<p class="card-text">Do you find anything that needs explanation?</p>
+			    			<p class="card-text">1. Highlight the text you feel not clear. <br>2. Input a question about the unclear text in the box appeared later.</p>
 			    	</div>
 				</div>
 
@@ -167,23 +160,6 @@
 						<p id="nextPageQuestion4"></p>
 					</div>
 				</div>
-	      		<!-- <div class="col-md-3">
-	      			<div id="wq4" style="display:none">
-						<p>Which sentence answers your fourth question?</p>
-						<input type="checkbox" name="yesno4">
-						<label>S1</label>
-						<input type="checkbox" name="yesno4">
-						<label>S2</label>
-						<input type="checkbox" name="yesno4">
-						<label>S3</label>
-						<input type="checkbox" name="yesno4">
-						<label>S4</label>
-						<input type="checkbox" name="yesno4">
-						<label>S5</label>
-						<input type="checkbox" name="yesno4">
-						<label>None of the above</label>
-					</div>
-	      		</div> -->
 	      	</div>
 	      	
 	      	<div class="row"><!--Row 5-->
@@ -211,10 +187,6 @@
 	    			<button class="ca" type="button" onclick="clearAll()">
 	    				<i class="fas fa-trash-alt"></i><span class="toolText">Clear all your marks</span>
 	    			</button>
-	    			<!-- <button class="fontplus" type="button" onclick="zoomin()"><i class="fas fa-plus"></i>
-	    			</button>
-	    			<button class="fontminus" type="button" onclick="zoomout()"><i class="fas fa-minus"></i>
-	    			</button> -->
 	    		</div>
 
 	      		<div class="col-md-6">
@@ -222,13 +194,9 @@
 	      			<div id="chooseQuestion">	      				
 	      				<div class="card" style="width: 30rem;">
 	      					<div class="card-body" >
-	      						<!-- <h5 class="card-title">Instructions</h5> -->
-	      						<!-- <p class="card-text">Do you find anything that needs explanation in this sentence?</p> -->
-	      						<div class="d-flex justify-content-around">
+	      						<div class="buttonControl">
 	      							<button class="btn btn-primary" type="button" onclick="vagueConfirm()">Add Highlight</button>
-	      						</div>
-	      						<div>
-	      							<button class="btn btn-primary" type="button" id="no" onclick="vagueDecline()" style="display: none; margin-top: 10px;">No Highlight?</button>
+	      							<button class="btn btn-primary" type="button" id="no" onclick="vagueDecline()" style="display: none;">No Highlight?</button>
 	      						</div>
 	      					</div>
 	      				</div>
@@ -237,14 +205,20 @@
 	      				<div id="chooseYes" style="display: none">
 	      					<div class="card" style="width: 30rem;">
 	      						<div class="card-body" >
-	      							<!-- <h5 class="card-title">Instructions</h5> -->
-	      							<!-- <p class="card-text">1. Highlight the text you feel not clear. <br>2. Input a question about the unclear text in the box appeared later.</p> -->
-	      							<p class="card-text">You can highlight the left side word.</p>
-	      							<div id="inputcard"></div>
-	      							<div id="nextButton" class="d-flex justify-content-around" style="display: none">
-	      								<button class="btn btn-primary" id="anotherH" type="button" onclick="anotherHighlight()" style="display: none">Add another highlight</button>
-	      								<button type="button" id="next" class="confirm btn btn-primary" onclick="show()">Next Sentence</button>
-	      								<!-- <button type="button" class="confirm" onclick="show()"><i class="fas fa-arrow-right fa-lg"></i></button> -->
+	      							<div class="verticalCenter">
+	      								<p class="card-text">Mark words on the left column</p>
+	      								<div id="inputcard"></div>
+	      							</div>
+
+	      							<div id="confirmInput" class="buttonControl" style="display: none">
+	      								<button type="button" id="confirm" class="btn btn-primary" onclick="">Confirm</button>
+	      								<button type="button" id="cancel" class="btn btn-secondary" onclick="undo()">Cancel</button>
+	      							</div>
+
+	      							<div id="nextButton" class="buttonControl" style="display: none">
+	      								<button type="button" id="anotherH" class="btn btn-primary" onclick="anotherHighlight()" style="display: none">Add another highlight</button>
+	      								<button type="button" id="next" class="btn btn-primary" onclick="show()">Next Sentence</button>
+	      								
 									</div>
 								</div>
 	      					</div>
@@ -260,18 +234,7 @@
 	      						</div>
 	      					</div>
 	      				</div>
-						<!-- <label>Mark the words you felt vague and input 1 question to make it clear
-							<button class="question"><i class="fas fa-question-circle"></i>
-							<span class="questiontext">Click and drag on the unclear text to mark up</span>
-							</button>
-						</label>
-						<br>
-						<div class="inputText">
-						<textarea name="questionAsked" id="questionAsked"></textarea>  需要修改格式 -->
-						<!-- </div> -->
 						<br> 
-
-						
 					</div>
 				</div>
 			</div>

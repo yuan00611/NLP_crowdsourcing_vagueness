@@ -58,7 +58,6 @@ function openNav() {
   $("#closebtn").toggle();
 }
 
-/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
 function closeNav() {
   document.getElementById("sidebar").style.width = "0";
   document.getElementById("content").style.marginLeft = "0";
@@ -157,7 +156,7 @@ function labelText()
 
 	if (range.collapsed == false && range.startOffset != 1 && num < 3 && range.startContainer.parentElement.nodeName == "P") {
 		var node = document.createElement("span");
-		node.style.backgroundColor = 'yellow';
+		node.style.backgroundColor = 'rgba(255,204,0,0.6)';
     var labelId = clickNum.toString() + num.toString();
     node.setAttribute("id", labelId);
     //console.log(node);
@@ -172,6 +171,7 @@ function labelText()
 
     if (num == 1) {
       $('#nextButton').toggle();
+      $('#confirmInput').toggle();
     }
 
 
@@ -180,7 +180,7 @@ function labelText()
     input.setAttribute('class', 'questionAsked');
     input.setAttribute('name', 'questionAsked');
     var questiontext = document.createElement("p");
-    questiontext.innerText = "What is your question of " + '\'' + node.innerText + '\'' + "?";
+    questiontext.innerText = "What is your question about " + '\'' + node.innerText + '\'' + "?";
     d.appendChild(questiontext);
     d.appendChild(input);
     // if (num == 1){
@@ -301,8 +301,8 @@ function show(){
     window.setTimeout(showDeclineButton, 5000);
 
     //clear the value of the textarea
-    //document.getElementById('questionAsked').value = '';
-    document.getElementById(pID).style.border = "none";
+    // document.getElementById('questionAsked').value = '';
+    // document.getElementById(pID).style.border = "none";
     // document.getElementById(pID).style.backgroundColor ="#FFFFFF";
 
     clickNum += 1;
