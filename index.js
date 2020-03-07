@@ -1,3 +1,24 @@
+//---------------------- set up for AMTurk --------------------------//
+
+var content = turkGetParam('content');
+var s1 = turkGetParam('s1');
+var s2 = turkGetParam('s2');
+var s3 = turkGetParam('s3');
+var s4 = turkGetParam('s4');
+var s5 = turkGetParam('s5');
+
+console.log(s1);
+
+document.getElementById('c').innerHTML = decodeURI(content);
+document.getElementById('P1').innerHTML = decodeURI(s1);
+document.getElementById('PP2').innerHTML = decodeURI(s2);
+document.getElementById('PP3').innerHTML = decodeURI(s3);
+document.getElementById('PP4').innerHTML = decodeURI(s4);
+document.getElementById('PP5').innerHTML = decodeURI(s5);
+
+turkSetAssignmentID();
+
+
 //----------------- set up of the starting --------------------------//
 
 //set the labelText function to P1
@@ -28,22 +49,6 @@ var sentenceText = document.getElementById('P1').innerText;
 
 //no buttom show up
 window.setTimeout(showDeclineButton, 5000);
-
-//---------------------- set up for AMTurk --------------------------//
-
-var content = turkGetParam('content');
-var s1 = turkGetParam('s1');
-var s2 = turkGetParam('s2');
-var s3 = turkGetParam('s3');
-var s4 = turkGetParam('s4');
-var s5 = turkGetParam('s5');
-
-document.getElementById('c').value = decodeURI(content);
-document.getElementById('P1').value = decodeURI(s1);
-document.getElementById('PP2').value = decodeURI(s2);
-document.getElementById('PP3').value = decodeURI(s3);
-document.getElementById('PP4').value = decodeURI(s4);
-document.getElementById('PP5').value = decodeURI(s5);
 
 //------------------ sidebar of the instructions ---------------------//
 function openNav() {
@@ -427,6 +432,8 @@ form.onsubmit = function(e){
   document.getElementById("reportId_text").value = JSON.stringify(returnText);
   document.getElementById("reportId_num").value = JSON.stringify(returnNum);
   document.getElementById("reportId_question").value = JSON.stringify(returnQuestion);
+
+  form.submit();
 
 }
 
