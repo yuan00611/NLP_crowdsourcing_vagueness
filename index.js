@@ -9,12 +9,12 @@ var s5 = turkGetParam('s5');
 
 //console.log(s1);
 
-// document.getElementById('c').innerHTML = decodeURI(content);
-// document.getElementById('P1').innerHTML = decodeURI(s1);
-// document.getElementById('PP2').innerHTML = decodeURI(s2);
-// document.getElementById('PP3').innerHTML = decodeURI(s3);
-// document.getElementById('PP4').innerHTML = decodeURI(s4);
-// document.getElementById('PP5').innerHTML = decodeURI(s5);
+document.getElementById('c').innerHTML = decodeURI(content);
+document.getElementById('P1').innerHTML = decodeURI(s1);
+document.getElementById('PP2').innerHTML = decodeURI(s2);
+document.getElementById('PP3').innerHTML = decodeURI(s3);
+document.getElementById('PP4').innerHTML = decodeURI(s4);
+document.getElementById('PP5').innerHTML = decodeURI(s5);
 
 turkSetAssignmentID();
 
@@ -101,13 +101,9 @@ function vagueConfirm(){
 }
 
 function vagueDecline(){
-  var novagarea = document.getElementById('noVague');
-  if (novagarea.value != "") {
-    $("#chooseNo").toggle();
-    $("#chooseQuestion").toggle();
-    $('#chooseNo').offset({top: position});
-  }
-  
+  $("#chooseNo").toggle();
+  $("#chooseQuestion").toggle();
+  $('#chooseNo').offset({top: position});
 }
 
 
@@ -399,6 +395,8 @@ function show(){
 }
 
 function declineNext(){
+  var novagarea = document.getElementById('noVague');
+  if (novagarea.value != "") {
   if (clickNum < 5) {
   
     //remove the function labeText of the previous sentence
@@ -463,7 +461,7 @@ function declineNext(){
     // $('#wq5').toggle();
     $('#s').toggle();
   }
-
+}
 }
 
 var form = document.querySelector("form");
