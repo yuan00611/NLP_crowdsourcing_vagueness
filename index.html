@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Annotation of Sentence Specificity</title>
+	<title>Ask Questions as You Read</title>
 	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="index.css" />
@@ -19,43 +19,26 @@
 
 	<div id="sidebar">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<h2> Welcome</h2>
-		<p>Thank you for joining our research! Your involvement will help to improve understanding of context information.</p>
-		<p>Before starting to work on the task, please read carefully the following instructions.</p>
-		<h2>Instruction</h2>
-		<h5>Guidance</h5>
-			<p>1. Highlight the part that you think is unclear.</p>
-			<p>2. Ask a question about the unclear part and click <i><b>submit</b></i>.</p>
-			<p>3. Decide whether your question is answered based on the next sentence.</p>
-			<p>4. Refer to Examples as follows.</p>
-		<h5>Operation</h5>
-			<ul>
-				<li>Click and drag to the end of words/phrases to highlight the elements you think are important.</li>
-				<br>
-				<li>You can change your selection by clicking the <i><b>undo last step</b></i> button to withdraw your last move, or the <i><b>clear all</b></i> button to redo the test.</li>
-			</ul>
-		<h5>Examples</h5>
-		<br>
-		<table>
-					<tr>
-						<td>
-							<h6>Right example</h6>
-							<img src="img/rightexample.png">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<h6>Wrong example</h6>
-							<img src="img/wrongexample.png">
-						</td>
-					</tr>
-				</table>
-		<h5>Learn More</h5>
-		<div id="moreinfo">
-			<p>This task aims to help XXXXXXX.</p>
-		</div>
-	</div>
-
+		<h2>Instructions</h2>
+		<p>Thank you for helping out with our research! Your involvement helps us to advance our understanding of reading comprehension. So before you start, please read the following instructuions carefully.</p>
+		<p>We would like to collect <b>high level questions</b> (e.g., questions marked by words like <i>how</i> and <i>why</i>) that occur to you as you read an article. So <b>first</b>, if you see some text in <i>Context</i>, please just read it as this appears before the sentences we ask you to annotate. <b>Then</b>, you will see the next chunk of the article sentence-by-sentence. For each sentence, we'd like to get at <i>where</i> in the sentence that you feel you'd like some <b>elaboration or explanation</b>, and what type of information you're seeking. For example, as you read the sentence</p>
+                <p><i><font color="#FF5733">The executive Roland Arnall is well respected in the business world, and by some fair-lending advocates.</font></i></p>
+                <p>You might now wonder, <b>why is Roland Arnall well-respected?</b> In this case, the phrase <i>well respected</i> need to be elaborated!</p>
+                <p>So the above is our task: we ask you to read a part of an article one sentence at a time, and as you read each sentence:</p>
+                <ol>
+                  <li>Click "Add Highlight" and highlight the part that you think need elaboration or explanation.</li>
+                  <li>Tell us what information you're seeking by <b>asking a question</b> about the part you just highlighted</li>
+                  <li>"Add another highlight" if there are more parts of the sentence you want to ask about, or press "Next sentence". You can ask a maximum of 3 questions per sentence.</li>
+                </ol>
+                <p>Some notes:</p>
+                <ul>
+                  <li>If the sentence is completely clear to you, a "No Highlight" button will show up after 5 seconds. Use this button only when you're very sure.</li>
+                  <li>If you see a green bar showing to the left of the chunk, this means the interface is expecting you to highlight some text.</li>
+                  <li>Please, please, write complete questions! We would like to answer them in the end so we need to know what you're really asking for :)</li>
+                  <li>Once you move on to the next sentence, you will not be able to edit or delete highlights and questions you did before.</li>
+                </ul>
+        </div>
+        
 <form name='mturk_form' method='post' id='mturk_form' action='https://workersandbox.mturk.com/mturk/externalSubmit'>
 
  <!-- <form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'> -->
@@ -70,7 +53,7 @@
 		<div class="container">
 
 			<div class="page-header text-center">
-				<h1>Annotation of Sentence Specificity</h1>
+				<h1>Ask Questions as You Read</h1>
 			</div>
 
 		
@@ -91,12 +74,11 @@
 
 				<div class="col-1"></div>
 
-			    <div class="col-md-6">
-			    	<div id="Instruct" style="width: 30rem;">
-			    			<p class="card-text">Do you find anything that needs explanation?</p>
-			    			<p class="card-text">1. Highlight the text you feel not clear. <br>2. Input a question about the unclear text in the box appeared later.</p>
-			    	</div>
-				</div>
+			    <!-- <div class="col-md-6"> -->
+			    <!-- 	<div id="Instruct" style="width: 30rem;"> -->
+			    <!-- 			<p class="card-text">1. Highlight a part of the sentence that you would like elaborated or explained. <br>2. Type a question about the highlighted text in the box appeared later.</p> -->
+			    <!-- 	</div> -->
+			    <!--     </div> -->
 
 			</div>
 
@@ -134,7 +116,7 @@
 	      	<div class="row"><!--Row 3-->
 	      		<div class="col-md-5" id="d3">
 	      			<div id="P3" style="display:none">
-	      					<p id = 'PP3'>By contrast, places such as Aberdeen, Dundee, Glasgow and Blackpool attributed one in 30 deaths to air pollution, highlighting what the study’s authors, the Centre for Cities thinktank, called a “south-north” divide in air quality.</p>
+	      					<p id = 'PP3'>By contrast, places such as Aberdeen, Dundee, Glasgow and Blackpool attributed one in 30 deaths to air pollution, highlighting what he study’s authors, the Centre for Cities thinktank, called a “south-north” divide in air quality.</p>
 	      			</div>
 	      		</div>
 	      		<div class="col-md-1"></div>
