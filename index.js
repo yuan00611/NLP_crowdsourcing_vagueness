@@ -41,6 +41,7 @@ var text = [];
 var textNum = [];
 
 //for retrieve 
+var returnQuesNum = [];
 var returnText = [];
 var returnNum = [];
 var returnQuestion = [];
@@ -121,7 +122,7 @@ function inputCheck(){
   }
 
   var wordCheck = false;
-  questionCheckWord = ['What', 'what', 'Where', 'where', 'When', 'when', 'Who', 'who', 'Why', 'why', 'Which', 'which', 'Is', 'is', 'Are', 'are', '?']
+  questionCheckWord = ['What', 'what', 'Where', 'where', 'When', 'when', 'Who', 'who', 'Why', 'why', 'Which', 'which', 'Is', 'is', 'Are', 'are','Do', 'Does', '?']
   for(let i = 0; i < questionCheckWord.length; i++){
     if (AllQues[AllQues.length - 1].value.toString().includes(questionCheckWord[i])) {
       wordCheck = true;      
@@ -241,7 +242,7 @@ function labelText()
 //-------------------- highlight undo -------------------------//
 function undo(){
   anotherHighlight();
-  if(num >= 0){
+  if(num > 0){
     num = num - 1;
     var labelId = clickNum.toString() + num.toString();
     last = document.getElementById(labelId);
@@ -254,8 +255,8 @@ function undo(){
     textNum.pop();
 
     var d = document.getElementById('inputcard');
-    d.removeChild(d.childNodes[1]);
-    d.removeChild(d.childNodes[0]);
+    d.removeChild(d.childNodes[d.childNodes.length - 1]);
+    d.removeChild(d.childNodes[d.childNodes.length - 1]);
 
     document.getElementById('confirmInput').style.display = 'none';
     
@@ -331,6 +332,7 @@ function show(){
 
     returnText.push(text);
     returnNum.push(textNum);
+    returnQuesNum.push(clickNum);
 
 
     text = [];
@@ -384,6 +386,10 @@ function show(){
     // var questionID = '#yourQ' + clickNum.toString();
     // $(questionID).toggle();
 
+    returnText.push(text);
+    returnNum.push(textNum);
+    returnQuesNum.push(clickNum);
+
     pID = 'P' + clickNum.toString();
     document.getElementById(pID).removeEventListener("mouseup", labelText);
     document.getElementById(pID).style.border = "none";
@@ -396,7 +402,7 @@ function show(){
 
 function declineNext(){
   var novagarea = document.getElementById('noVague');
-  if (novagarea.value != "") {
+  if (novagarea.value == "I found nothing vague here") {
   if (clickNum < 5) {
   
     //remove the function labeText of the previous sentence
@@ -433,7 +439,7 @@ function declineNext(){
     sentenceText = document.getElementById(ppID).innerText;
     var paragraphID = '#P' + clickNum.toString();
     $(paragraphID).toggle();
-    //document.getElementById(pID).style.borderLeft = "thick solid #C4D037";
+    document.getElementById(pID).style.borderLeft = "thick solid #C4D037";
     // document.getElementById(pID).style.backgroundColor = "#F8F8F8";
 
     dID = 'd' + clickNum.toString();
@@ -471,6 +477,8 @@ form.onsubmit = function(e){
   document.getElementById("reportId_text").value = JSON.stringify(returnText);
   document.getElementById("reportId_num").value = JSON.stringify(returnNum);
   document.getElementById("reportId_question").value = JSON.stringify(returnQuestion);
+  document.getElementById("reportId_questionNum").value = JSON.stringify(returnQuesNum);
+  
 
   // console.log(returnText);
   // console.log(returnNum);
